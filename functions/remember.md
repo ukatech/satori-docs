@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（remember,n）
+（remember、n）
 ```
 
 ## 引数
@@ -28,7 +28,7 @@
 
 ```
 ＊OnMouseDoubleClick
-もう一度言いますね。（remember,0）
+もう一度言いますね。（remember、0）
 ```
 
 ## 関連項目

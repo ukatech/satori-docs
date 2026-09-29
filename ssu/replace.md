@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（replace,文字列,置換前,置換後）
+（replace、文字列、置換前、置換後）
 ```
 
 ## 引数
@@ -27,8 +27,8 @@
 ## 使用例
 
 ```
-（replace,aabbaa,aa,x）   → xbbx
-（replace,abc,,x）        → abc
+（replace、aabbaa、aa、x）   → xbbx
+（replace、abc、、x）        → abc
 ```
 
 ## 関連項目

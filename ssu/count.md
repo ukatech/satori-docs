@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（count,対象1,対象2,…,探す文字列）
+（count、対象1、対象2、…、探す文字列）
 ```
 
 ## 引数
@@ -26,9 +26,9 @@
 ## 使用例
 
 ```
-（count,abababa,aba）   → 2
-（count,abab,ab,b）     → 3   （abab の中の b が 2 回 + ab の中の b が 1 回）
-（count,abc）           → 0
+（count、abababa、aba）   → 2
+（count、abab、ab、b）     → 3   （abab の中の b が 2 回 + ab の中の b が 1 回）
+（count、abc）           → 0
 ```
 
 ## 関連項目

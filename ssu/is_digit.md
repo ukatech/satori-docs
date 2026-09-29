@@ -5,8 +5,8 @@
 ## 書式
 
 ```
-（is_digit,文字列）
-（is_digit,文字列,整数）
+（is_digit、文字列）
+（is_digit、文字列、整数）
 ```
 
 ## 引数
@@ -30,13 +30,13 @@
 ## 使用例
 
 ```
-（is_digit,123）        → 1
-（is_digit,１２３）     → 1
-（is_digit,-1.5）       → 1
-（is_digit,1.5,整数）   → 0
-（is_digit,1.2.3）      → 0
-（is_digit,abc）        → 0
-（is_digit,-）          → 0
+（is_digit、123）        → 1
+（is_digit、１２３）     → 1
+（is_digit、-1.5）       → 1
+（is_digit、1.5、整数）   → 0
+（is_digit、1.2.3）      → 0
+（is_digit、abc）        → 0
+（is_digit、-）          → 0
 ```
 
 ## 関連項目

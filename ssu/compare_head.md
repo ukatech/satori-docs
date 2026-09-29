@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（compare_head,文字列,先頭）
+（compare_head、文字列、先頭）
 ```
 
 ## 引数
@@ -26,8 +26,8 @@
 ## 使用例
 
 ```
-（compare_head,abcdef,ABC）   → 1
-（compare_head,abc,abcdef）   → 0
+（compare_head、abcdef、ABC）   → 1
+（compare_head、abc、abcdef）   → 0
 ```
 
 ## 関連項目

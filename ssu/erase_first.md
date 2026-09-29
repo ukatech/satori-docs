@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（erase_first,文字列,削除する文字列）
+（erase_first、文字列、削除する文字列）
 ```
 
 ## 引数
@@ -26,7 +26,7 @@
 ## 使用例
 
 ```
-（erase_first,aabbaa,aa）   → bbaa
+（erase_first、aabbaa、aa）   → bbaa
 ```
 
 ## 関連項目

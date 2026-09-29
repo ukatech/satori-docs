@@ -5,8 +5,8 @@
 ## 書式
 
 ```
-（han2zen,文字列）
-（han2zen,文字列,対象）
+（han2zen、文字列）
+（han2zen、文字列、対象）
 ```
 
 ## 引数
@@ -27,9 +27,9 @@
 ## 使用例
 
 ```
-（han2zen,ABC123!ｱｶﾞ）          → ＡＢＣ１２３！アガ
-（han2zen,ABC123,数字）         → ABC１２３
-（han2zen,a b）                 → ａ　ｂ
+（han2zen、ABC123!ｱｶﾞ）          → ＡＢＣ１２３！アガ
+（han2zen、ABC123、数字）         → ABC１２３
+（han2zen、a b）                 → ａ　ｂ
 ```
 
 ## 関連項目

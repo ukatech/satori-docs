@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（is_alpha,文字列）
+（is_alpha、文字列）
 ```
 
 ## 引数
@@ -21,9 +21,9 @@
 ## 使用例
 
 ```
-（is_alpha,abcＸ）   → 1
-（is_alpha,ab1）     → 0
-（is_alpha,あ）      → 0
+（is_alpha、abcＸ）   → 1
+（is_alpha、ab1）     → 0
+（is_alpha、あ）      → 0
 ```
 
 ## 関連項目

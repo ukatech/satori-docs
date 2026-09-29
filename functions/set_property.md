@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（set_property,プロパティ名,値）
+（set_property、プロパティ名、値）
 ```
 
 ## 引数
@@ -26,7 +26,7 @@
 ## 使用例
 
 ```
-（set_property,balloon.scale,120）
+（set_property、balloon.scale、120）
 ```
 
 ## 関連項目

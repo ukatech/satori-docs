@@ -5,8 +5,8 @@
 ## 書式
 
 ```
-（get_property,プロパティ名）
-（get_property,プロパティ名,既定値）
+（get_property、プロパティ名）
+（get_property、プロパティ名、既定値）
 ```
 
 ## 引数
@@ -27,7 +27,7 @@
 ## 使用例
 
 ```
-現在のゴーストは（get_property,currentghost.name,不明）です。
+現在のゴーストは（get_property、currentghost.name、不明）です。
 ```
 
 ## 関連項目

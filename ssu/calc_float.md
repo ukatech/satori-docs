@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（calc_float,式）
+（calc_float、式）
 ```
 
 ## 引数
@@ -32,11 +32,11 @@
 ```
 ＄SAORI引数の計算＝無効
 
-（calc_float,5/3）       → 1.666667
-（calc_float,1.5+2）     → 3.5
-（calc_float,1/4）       → 0.25
-（calc_float,-0.5*4）    → -2
-（calc_float,2^0.5）     → 1.414214
+（calc_float、5/3）       → 1.666667
+（calc_float、1.5+2）     → 3.5
+（calc_float、1/4）       → 0.25
+（calc_float、-0.5*4）    → -2
+（calc_float、2^0.5）     → 1.414214
 ```
 
 ## 関連項目

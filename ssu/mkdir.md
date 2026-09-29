@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（mkdir,フォルダ）
+（mkdir、フォルダ）
 ```
 
 ## 引数
@@ -25,7 +25,7 @@
 ## 使用例
 
 ```
-（mkdir,C:\temp\newfolder）
+（mkdir、C:\temp\newfolder）
 ```
 
 ## 関連項目

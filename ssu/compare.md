@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（compare,文字列1,文字列2）
+（compare、文字列1、文字列2）
 ```
 
 ## 引数
@@ -26,10 +26,10 @@
 ## 使用例
 
 ```
-（compare,ABC,abc）    → 1
-（compare,ＡＢＣ,abc） → 1
-（compare,ｱ,ア）       → 1
-（compare,abc,abd）    → 0
+（compare、ABC、abc）    → 1
+（compare、ＡＢＣ、abc） → 1
+（compare、ｱ、ア）       → 1
+（compare、abc、abd）    → 0
 ```
 
 ## 関連項目

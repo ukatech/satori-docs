@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（compare_case,文字列1,文字列2）
+（compare_case、文字列1、文字列2）
 ```
 
 ## 引数
@@ -26,8 +26,8 @@
 ## 使用例
 
 ```
-（compare_case,ABC,abc）    → 0
-（compare_case,ＡＢＣ,ABC） → 1
+（compare_case、ABC、abc）    → 0
+（compare_case、ＡＢＣ、ABC） → 1
 ```
 
 ## 関連項目

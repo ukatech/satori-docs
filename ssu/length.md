@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（length,文字列）
+（length、文字列）
 ```
 
 ## 引数
@@ -25,9 +25,9 @@
 ## 使用例
 
 ```
-（length,あいう）   → 3
-（length,abc）      → 3
-（length,😀）       → 1
+（length、あいう）   → 3
+（length、abc）      → 3
+（length、😀）       → 1
 ```
 
 ## 関連項目

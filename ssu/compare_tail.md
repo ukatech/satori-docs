@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（compare_tail,文字列,末尾）
+（compare_tail、文字列、末尾）
 ```
 
 ## 引数
@@ -26,8 +26,8 @@
 ## 使用例
 
 ```
-（compare_tail,abcdef,DEF）   → 1
-（compare_tail,abcdef,ABC）   → 0
+（compare_tail、abcdef、DEF）   → 1
+（compare_tail、abcdef、ABC）   → 0
 ```
 
 ## 関連項目

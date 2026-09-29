@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（is_empty,文字列）
+（is_empty、文字列）
 ```
 
 ## 引数
@@ -21,8 +21,8 @@
 ## 使用例
 
 ```
-（is_empty,）    → 1
-（is_empty,a）   → 0
+（is_empty、）    → 1
+（is_empty、a）   → 0
 （is_empty）     → 1
 ```
 

@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（compare_tail_case,文字列,末尾）
+（compare_tail_case、文字列、末尾）
 ```
 
 ## 引数
@@ -26,8 +26,8 @@
 ## 使用例
 
 ```
-（compare_tail_case,abcdef,DEF）   → 0
-（compare_tail_case,abcdef,def）   → 1
+（compare_tail_case、abcdef、DEF）   → 0
+（compare_tail_case、abcdef、def）   → 1
 ```
 
 ## 関連項目

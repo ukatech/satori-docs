@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（replace_first,文字列,置換前,置換後）
+（replace_first、文字列、置換前、置換後）
 ```
 
 ## 引数
@@ -27,7 +27,7 @@
 ## 使用例
 
 ```
-（replace_first,aabbaa,aa,x）   → xbbaa
+（replace_first、aabbaa、aa、x）   → xbbaa
 ```
 
 ## 関連項目

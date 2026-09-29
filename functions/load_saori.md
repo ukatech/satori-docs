@@ -5,7 +5,7 @@
 ## 書式
 
 ```
-（load_saori,呼び出し名,相対パス,定義済み引数,…）
+（load_saori、呼び出し名、相対パス、定義済み引数、…）
 ```
 
 ## 引数
@@ -27,7 +27,7 @@
 ## 使用例
 
 ```
-（load_saori,time,saori\time_check.dll）
+（load_saori、time、saori\time_check.dll）
 ```
 
 ## 関連項目
