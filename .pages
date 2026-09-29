@@ -1,0 +1,9 @@
+nav:
+  - index.md
+  - はじめに: startup
+  - 文法: grammar
+  - SHIORI としての動作: shiori
+  - システム変数・組み込み名: system
+  - （）内蔵関数: functions
+  - ssu（同梱 SAORI）: ssu
+  - その他: other
