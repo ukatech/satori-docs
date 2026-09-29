@@ -18,7 +18,7 @@
 
 <div class="s2-cta" markdown>
 
-[試験版をダウンロード（GitHub Releases）](https://github.com/ukatech/satoriya-shiori/releases/tag/Mc201-2) [不具合・気づいた点の報告（Issues）](https://github.com/ukatech/satoriya-shiori/issues) [ACP 版との違い](unicode-changes.md)
+[試験版をダウンロード（GitHub Releases）](https://github.com/ukatech/satoriya-shiori/releases/tag/Mc201-2) [不具合・気づいた点の報告](#報告のしかた) [ACP 版との違い](unicode-changes.md)
 
 </div>
 
@@ -105,7 +105,13 @@ Wiki や、長く使ってこられた方の記憶にある動作と、この仕
 
 ## 報告のしかた
 
-[Issues](https://github.com/ukatech/satoriya-shiori/issues) に、次のような内容を書いていただけると、原因を追いやすくなります。「なんとなくおかしい」だけでも構いません。
+報告先は次のいずれかです。GitHub のアカウントがなくても大丈夫です。
+
+- [GitHub Issues](https://github.com/ukatech/satoriya-shiori/issues)（いちばん追いやすい）
+- 作者の [X（@ponapalt）](https://x.com/ponapalt)
+- 作者の [ウカドン（@ponapalt）](https://ukadon.shillest.net/@ponapalt)
+
+X やウカドンには、次のような内容を書いていただけると、原因を追いやすくなります。「なんとなくおかしい」だけでも構いません。長くなるときは、返信を何回かに分けても、テキストを貼っても大丈夫です。
 
 ```
 ■ バージョン
