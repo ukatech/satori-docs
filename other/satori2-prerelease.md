@@ -108,10 +108,10 @@ Wiki や、長く使ってこられた方の記憶にある動作と、この仕
 報告先は次のいずれかです。GitHub のアカウントがなくても大丈夫です。
 
 - [GitHub Issues](https://github.com/ukatech/satoriya-shiori/issues)（いちばん追いやすい）
-- 作者の [X（@ponapalt）](https://x.com/ponapalt)
-- 作者の [ウカドン（@ponapalt）](https://ukadon.shillest.net/@ponapalt)
+- 作業チームのひとり、ponapalt の [X（@ponapalt）](https://x.com/ponapalt)
+- 同じく ponapalt の [うかどん（@ponapalt）](https://ukadon.shillest.net/@ponapalt)
 
-X やウカドンには、次のような内容を書いていただけると、原因を追いやすくなります。「なんとなくおかしい」だけでも構いません。長くなるときは、返信を何回かに分けても、テキストを貼っても大丈夫です。
+X やうかどんには、次のような内容を書いていただけると、原因を追いやすくなります。「なんとなくおかしい」だけでも構いません。長くなるときは、返信を何回かに分けても、テキストを貼っても大丈夫です。
 
 ```
 ■ バージョン
