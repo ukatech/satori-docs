@@ -11,6 +11,10 @@ site_dir: _site
 
 theme:
   name: material
+  # OGP などの <head> の追加（overrides/main.html）
+  custom_dir: overrides
+  logo: assets/logo.png
+  favicon: assets/logo.png
   language: ja
   features:
     - navigation.sections
@@ -22,18 +26,26 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
+      primary: custom
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: ダークモードに切り替え
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
+      primary: custom
       accent: indigo
       toggle:
         icon: material/brightness-4
         name: ライトモードに切り替え
+
+# ページごとの OGP（overrides/main.html が使う）。キーは原稿のパス、image は site_url からの相対パス（1200x630）
+extra:
+  ogp:
+    other/satori2-prerelease.md:
+      title: 里々 Unicode 版 試験版 ─ 動作確認のお願い
+      description: 内部を Unicode にした里々（Mc201-2）の試験版です。手元のゴーストで動かして、従来の仕様との違いや不具合を教えてください。
+      image: assets/satori2/ogp.png
 
 extra_css:
   - assets/extra.css

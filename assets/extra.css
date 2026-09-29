@@ -1,3 +1,18 @@
+/* ヘッダの色（落ち着いた赤）。ポストのロゴが赤に溶けないよう、白い丸背景にする */
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #a4392f;
+  --md-primary-fg-color--light: #c25a4f;
+  --md-primary-fg-color--dark: #7d2a22;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, .7);
+}
+.md-logo img {
+  background-color: #fff;
+  border-radius: 50%;
+}
+
 /* 里々の記法（全角カッコなど）を含むコードブロックを読みやすくする */
 .md-typeset code {
   word-break: normal;
@@ -9,4 +24,71 @@
 }
 .md-typeset table:not([class]) {
   display: table;
+}
+
+/* ===== 里々 Unicode 版 試験版のお知らせ（other/satori2-prerelease.md） ===== */
+.s2-hero img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .s2-lead {
+  max-width: 42em;
+  margin: 1.8em auto 1em;
+}
+.md-typeset .s2-lead p:first-child strong {
+  font-size: 1.25em;
+}
+
+.md-typeset .s2-cta p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8em;
+  justify-content: center;
+}
+.md-typeset .s2-cta a {
+  padding: .6em 1.4em;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 999px;
+  font-weight: 700;
+}
+.md-typeset .s2-cta a:first-child {
+  border-color: transparent;
+  background: #a4392f;
+  color: #fff;
+}
+.md-typeset .s2-cta a:hover {
+  filter: brightness(1.1);
+}
+
+.md-typeset .s2-chars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2em;
+  margin: 1.2em 0;
+  padding: 1em 1.4em;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  background: #f7f1e3;
+  color: #2b2a26;
+}
+.md-typeset .s2-chars img {
+  display: block;
+  height: 9em;
+  width: auto;
+  margin: 0;
+}
+.md-typeset .s2-chars img.s2-komainu {
+  height: 4.5em;
+}
+.md-typeset .s2-chars p {
+  margin: 0;
+  font-size: .85em;
+}
+
+.md-typeset .s2-byline {
+  margin-top: 3em;
+  text-align: center;
 }
