@@ -8,7 +8,7 @@
 
 <div class="s2-lead" markdown>
 
-**里々の内部を Unicode にした試験版（Mc201-2）を公開しました。**
+**里々の内部を Unicode にした試験版（Mc200 系）を公開しました。**
 
 辞書に絵文字や Shift_JIS にない文字を書けるようになり、UTF-8 の辞書も読めます。その一方で、20 年以上使われてきた仕組みの土台を入れ替えたので、**作者ひとりの手元では確かめきれていない部分が確実に残っています。**
 
@@ -18,7 +18,7 @@
 
 <div class="s2-cta" markdown>
 
-[試験版をダウンロード（GitHub Releases）](https://github.com/ukatech/satoriya-shiori/releases/tag/Mc201-2) [不具合・気づいた点の報告](#報告のしかた) [ACP 版との違い](unicode-changes.md)
+[試験版をダウンロード（GitHub Releases）](https://github.com/ukatech/satoriya-shiori/releases) [不具合・気づいた点の報告](#報告のしかた) [ACP 版との違い](unicode-changes.md)
 
 </div>
 
@@ -69,11 +69,11 @@
 ### 1. とにかく動かしてみる
 
 1. ゴースト全体と、セーブデータのバックアップを取る。
-2. [Releases](https://github.com/ukatech/satoriya-shiori/releases/tag/Mc201-2) の `satori.zip` から `satori.dll` を取り出し、ゴーストの `master` フォルダの `satori.dll` と差し替える。
+2. [Releases](https://github.com/ukatech/satoriya-shiori/releases) の一覧で、いちばん上にある Pre-release（最新の試験版）の `satori.zip` から `satori.dll` を取り出し、ゴーストの `master` フォルダの `satori.dll` と差し替える。
 3. いつもどおりゴーストを起動して、しばらく使ってみる。
 4. 動作に違和感があれば、下の観点を参考に、報告してください。何も起きなければ、それもうれしい報告です（「このゴーストで数日動かして問題なし」の一言で助かります）。
 
-バージョンは `（里々のバージョン）` で確認できます（`phase Mc201-2` と出ます）。
+バージョンは `（里々のバージョン）` で確認できます（`phase Mc2XX-Z` の形で、入れた版の番号が出ます）。
 
 ### 2. 特に見ていただきたい観点
 
@@ -115,7 +115,7 @@ X やうかどんには、次のような内容を書いていただけると、
 
 ```
 ■ バージョン
-（里々のバージョン）の結果: phase Mc201-2
+（里々のバージョン）の結果: phase Mc2XX-Z（実際に出た値）
 OS: Windows 11
 ベースウェア: SSP 2.x.x
 ゴースト: （名前。配布されているもの・自作・その他）

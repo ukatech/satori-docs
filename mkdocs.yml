@@ -44,7 +44,7 @@ extra:
   ogp:
     other/satori2-prerelease.md:
       title: 里々 Unicode 版 試験版 ─ 動作確認のお願い
-      description: 内部を Unicode にした里々（Mc201-2）の試験版です。手元のゴーストで動かして、従来の仕様との違いや不具合を教えてください。
+      description: 内部を Unicode にした里々（Mc200 系）の試験版です。手元のゴーストで動かして、従来の仕様との違いや不具合を教えてください。
       image: assets/satori2/ogp.png
 
 extra_css:

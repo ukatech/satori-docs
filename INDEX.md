@@ -11,7 +11,7 @@
 
 ## はじめての方へ
 
-- 試験版（Mc201-2）を試して、動作確認に協力したい → [里々 Unicode 版 試験版 ─ 動作確認のお願い](other/satori2-prerelease.md)
+- 試験版（Mc200 系）を試して、動作確認に協力したい → [里々 Unicode 版 試験版 ─ 動作確認のお願い](other/satori2-prerelease.md)
 - 里々って何？ → [里々とは](startup/what-is-satori.md)
 - はじめてゴーストを作りたい → [はじめてのゴースト](startup/getting-started.md)
 - ACP 版（Mc1XX）から Unicode 版（Mc2XX）に移りたい → [ACP 版との違い](other/unicode-changes.md)
