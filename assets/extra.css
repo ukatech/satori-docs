@@ -63,31 +63,6 @@
   filter: brightness(1.1);
 }
 
-.md-typeset .s2-chars {
-  display: flex;
-  align-items: flex-end;
-  gap: 1.2em;
-  margin: 1.2em 0;
-  padding: 1em 1.4em;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 12px;
-  background: #f7f1e3;
-  color: #2b2a26;
-}
-.md-typeset .s2-chars img {
-  display: block;
-  height: 9em;
-  width: auto;
-  margin: 0;
-}
-.md-typeset .s2-chars img.s2-komainu {
-  height: 4.5em;
-}
-.md-typeset .s2-chars p {
-  margin: 0;
-  font-size: .85em;
-}
-
 .md-typeset .s2-byline {
   margin-top: 3em;
   text-align: center;

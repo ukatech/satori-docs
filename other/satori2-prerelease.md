@@ -137,26 +137,25 @@ OS: Windows 11
 - **ハーネス:** `satori.dll` を SSP なしで直接呼ぶ小さなプログラムが、リポジトリの [`satoriya/test/harness`](https://github.com/ukatech/satoriya-shiori/tree/unicode/satoriya/test/harness) にあります
 - **tama:** 辞書のエラーは、ログ受信ツール [tama](https://github.com/YAYA-shiori/tama/releases) で確認できます
 
-## 動作確認のはじめの一歩に
-
-里々の配布物には、もともとサンプルゴースト「ポストと狛犬」が付属していました。小さなゴーストなので、試験版を差し替えて動かす最初の確認に向いています。
-
-<div class="s2-chars" markdown>
-
-![ポスト](../assets/satori2/post.png)
-![狛犬](../assets/satori2/komainu.png){ .s2-komainu }
-
-「ポストと狛犬」（櫛ヶ浜やぎ）。ポストはお便りを受けとって、狛犬は番をする。試験版にも、その両方がほしいところです。
-
-</div>
-
 ## もとに戻したくなったら
+
+### バックアップから戻す（確実な方法）
 
 1. ゴーストを終了する。
 2. `satori.dll` を、バックアップした従来の版に戻す。
 3. `satori_savedata.txt` と `satori_savebackup.txt` を、バックアップから戻す。
 
 3 を忘れて従来の版で起動すると、UTF-8 のセーブデータが読めずに、変数が失われます。
+
+### バックアップがないとき：セーブデータを Shift_JIS にする
+
+セーブデータ（`satori_savedata.txt` と `satori_savebackup.txt`）は、中身の書式は従来の版と同じで、文字コードが UTF-8 になっているだけです。ゴーストを終了したあと、この 2 つをテキストエディタで開き、**文字コードを Shift_JIS（ANSI、CP932）にして保存し直す**と、従来の版でも読めるようになります。
+
+- 改行は CRLF のままにしてください。
+- Shift_JIS にない文字（絵文字や「髙」など）が変数の値に含まれていると、変換で `?` になったり、失われたりします。その変数は、戻したあとの値がずれます。
+- 暗号化セーブ（`.sat`）はエディタで開けないので、この方法は使えません。
+- UTF-8 で書いた辞書も、同じように Shift_JIS にする必要があります（Shift_JIS にない文字を使っていない場合のみ）。
+- 変換前に、必ず現在のファイルのコピーを取ってください。
 
 ## 関連
 
@@ -170,5 +169,7 @@ OS: Windows 11
 ---
 
 このページの文・図: **[Claudia](https://ponadocs.shillest.net/claudia/)**
+
+上の絵は、里々のサンプルゴースト「ポストと狛犬」（櫛ヶ浜やぎ）のものです。
 
 </div>
