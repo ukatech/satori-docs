@@ -56,6 +56,8 @@
 | `400 Bad Request / 呼び出しの不備` | SAORI が 400 を返した |
 | `500 Internal Server Error / saori内でのエラー` | SAORI が 500 を返した |
 
+これらのログは `DLLのパス - 呼び出し名 : 内容` の形式です。内蔵の ssu を使っている（`saori\ssu.dll` のファイルがない）場合、Mc201-6以降は DLL のパスの代わりに `(internal ssu)` と表示されます。
+
 ## 里々を SAORI として呼び出す
 
 `satori.dll` は、`SAORI/1.x` のリクエストにも応答できます（`Argument0` を ID、`Argument1`… を `Reference0`… にして通常と同様に処理し、`Result` と `Value0`… で返します）。
