@@ -29,6 +29,7 @@
 - 「区切り文字」を省略した場合、または空の場合は、文字列を 1 文字ずつに分割します。
 - 空の要素は、「空要素を残す」を指定しない限り捨てられます。
 - 「区切り文字」を文字列として（並びのまま）区切りにしたいときは [split_string](split_string.md) を使います。
+- `（S0）` などを上書きせずに、指定した名前の変数に結果を入れたいときは、内蔵関数の [split_to](../functions/split_to.md) を使います（Mc201-5以降）。
 
 ## 使用例
 
@@ -45,3 +46,4 @@
 
 - [split_string](split_string.md)
 - [join](join.md)
+- [split_to](../functions/split_to.md)

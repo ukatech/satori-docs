@@ -23,9 +23,9 @@
 
 `SecurityLevel` が `local` でないリクエスト（外部からのイベントなど）では、次の関数は実行されず、空文字列になります（ログに `local/Localでないので蹴りました` と出ます）。
 
-`set` `loop` `sync` `remember` `call` `vncall` `equal` `get_property` `set_property` `load_saori` `単語の追加` `追加単語の削除` `追加単語の全削除`
+`set` `loop` `sync` `remember` `call` `vncall` `equal` `変数の一括削除` `変数の一括コピー` `split_to` `get_property` `set_property` `load_saori` `単語の追加` `追加単語の削除` `追加単語の全削除`
 
-`nop` `バイト値` `合成単語群` `文の数` と特殊形式は、外部からのイベントでも実行できます。外部イベントを許可する方法は[プロトコルとリクエスト処理](../shiori/protocol.md#外部からのイベントの許可)を参照してください。
+`nop` `変数の列挙` `バイト値` `合成単語群` `文の数` と特殊形式は、外部からのイベントでも実行できます。外部イベントを許可する方法は[プロトコルとリクエスト処理](../shiori/protocol.md#外部からのイベントの許可)を参照してください。
 
 ## 一覧
 
@@ -41,6 +41,10 @@
 | [nop](nop.md) | 何もしない（副作用のためだけに使う） |
 | [sync](sync.md) | 呼び出しをスクリプトの再生タイミングまで遅らせる |
 | [remember](remember.md) | 過去に返したスクリプトを取り出す |
+| [変数の一括削除](erase-variables.md) | 名前が接頭辞で始まる変数をすべて削除する |
+| [変数の一括コピー](copy-variables.md) | 名前が接頭辞で始まる変数を、別の接頭辞の名前に写す |
+| [変数の列挙](list-variables.md) | 名前が接頭辞で始まる変数の名前を並べる |
+| [split_to](split_to.md) | 文字列を分割して、指定した名前の変数に入れる |
 
 ### 特殊形式（条件・繰り返し）
 

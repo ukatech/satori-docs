@@ -100,7 +100,7 @@
 
 | 種類 | 関数 |
 |------|------|
-| 変数・呼び出し | [set](functions/set.md) [call](functions/call.md) [vncall](functions/vncall.md) [loop](functions/loop.md) [equal](functions/equal.md) [nop](functions/nop.md) [sync](functions/sync.md) [remember](functions/remember.md) |
+| 変数・呼び出し | [set](functions/set.md) [call](functions/call.md) [vncall](functions/vncall.md) [loop](functions/loop.md) [equal](functions/equal.md) [nop](functions/nop.md) [sync](functions/sync.md) [remember](functions/remember.md) [変数の一括削除](functions/erase-variables.md) [変数の一括コピー](functions/copy-variables.md) [変数の列挙](functions/list-variables.md) [split_to](functions/split_to.md) |
 | 特殊形式 | [when](functions/when.md) [whenlist](functions/whenlist.md) [times](functions/times.md) [while](functions/while.md) [for](functions/for.md) |
 | 単語・文字 | [バイト値](functions/byte-value.md) [合成単語群](functions/synthesized-words.md) [文の数](functions/talk-count.md) [単語の追加](functions/add-word.md) [追加単語の削除](functions/remove-added-word.md) [追加単語の全削除](functions/remove-all-added-words.md) |
 | 本体との連携 | [get_property](functions/get_property.md) [set_property](functions/set_property.md) [load_saori](functions/load_saori.md) |
