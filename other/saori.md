@@ -43,6 +43,7 @@
 ## 通信
 
 - 里々から SAORI へは `Charset: UTF-8` で送ります。SAORI が `loadu` をエクスポートしていれば UTF-8 のパスで、なければ従来の `load` で呼びます。
+- `GET Version` の応答に `Charset` ヘッダがない（または空の）SAORI には、Mc201-9以降、直後に何もしない `EXECUTE`（`Argument0` が空）を 1 回送り、応答を読み捨てます。YAYA as SAORI の古い `ayasaori.aym` は、`GET Version` で `Charset` を返さず、その後の最初の `EXECUTE` だけ文字コードの設定が合わずに文字化けするためです。`ayasaori.aym` を `yaya-as-saori` の現行版に差し替えれば、この呼び出しは行われません。
 - 応答は、応答の `Charset` ヘッダに従って読みます（なければ内容で判定）。
 
 ## エラー
