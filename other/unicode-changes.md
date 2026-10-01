@@ -104,6 +104,11 @@ Unicode 版の作成にともなって、次の不具合が直っています。
 
 - YAYA as SAORI（`yaya.dll`）の古い `ayasaori.aym` を使っていると、最初の SAORI 呼び出しの引数や結果だけが文字化けしていた（Mc172-3 では起きていなかった）。`GET Version` の応答に `Charset` がない SAORI には、直後に何もしない `EXECUTE` を 1 回送って読み捨てるようにした（[SAORI の通信](saori.md#通信)）。
 
+## Mc201-10 での追加
+
+- YAYA と同じ `Set_loghandler` エクスポートを追加した。コールバックが設定されている間は、ログをウィンドウに送らず、YAYA と同じ形でコールバックに渡す（[ログ](../shiori/debug.md#ログ)）。
+- tama へ送るログの終了の通知（`E_END`）の値が YAYA と違っていた（5 を送っていた。YAYA では 6）のを直した。
+
 ## Mc201-5 での追加
 
 - 内蔵関数 [変数の一括削除](../functions/erase-variables.md)、[変数の一括コピー](../functions/copy-variables.md)、[変数の列挙](../functions/list-variables.md)：名前が接頭辞で始まる変数をまとめて扱う。
