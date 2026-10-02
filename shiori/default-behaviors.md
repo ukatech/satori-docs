@@ -23,6 +23,8 @@
 
 `OnChoiceSelect` に文がなければ、選択肢の ID と同名の文を実行します（[選択肢](../grammar/09-choices.md)）。
 
+引数付きの選択肢（`\q[ラベル,ID,引数…]`）が選ばれて `OnChoiceSelectEx` が届いたときは、`＊OnChoiceSelectEx` と `＊OnChoiceSelect` のどちらもなければ、ID と同名の文を、引数を `（Ａ０）`〜にして実行します（Mc201-11以降。[引数を渡す](../grammar/09-choices.md#引数を渡す)）。
+
 ## 終了
 
 `OnClose` に文がなくても、`\-` を返して終了します。

@@ -52,6 +52,7 @@
 |----------|------|
 | `OnAnchorSelect` | Reference0 がアンカー名なら、同名の文を実行（辞書に `＊OnAnchorSelect` があっても優先） |
 | `OnChoiceSelect` | 定義がなければ、Reference0（選択肢の ID）と同名の文を実行 |
+| `OnChoiceSelectEx` | 引数付きの選択肢（Reference2 以降がある）で、`＊OnChoiceSelectEx` も `＊OnChoiceSelect` もなければ、Reference1（ID）と同名の文を、Reference2 以降を `（Ａ０）`〜にして実行（Mc201-11以降。[選択肢](../grammar/09-choices.md#引数を渡す)） |
 | `OnRecommendsiteChoice` | 定義がなければ、おすすめサイト用の文を実行 |
 | `OnCommunicate` | [コミュニケート](communicate.md) |
 | `OnUpdateReady` | Reference0 に 1 を足す |
