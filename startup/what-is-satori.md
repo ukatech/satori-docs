@@ -38,7 +38,7 @@
 
 ## このマニュアルの読み方
 
-- はじめての方は、[はじめてのゴースト](getting-started.md)から。
+- はじめての方は、[はじめてのゴースト](getting-started.md)から。動くサンプルは[ポストと狛犬 V2](https://github.com/ukatech/POST_and_KOMAINU_V2)（[Releases](https://github.com/ukatech/POST_and_KOMAINU_V2/releases) から nar を入手）。
 - 書き方を調べるときは、[文法](../grammar/01-dictionary-files.md)。
 - 起動・終了・マウス操作などの動作は、[SHIORI としての動作](../shiori/protocol.md)。
 - 関数を調べるときは、[（）内蔵関数](../functions/index.md)と [ssu](../ssu/index.md)。

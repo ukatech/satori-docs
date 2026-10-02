@@ -14,6 +14,7 @@
 - 従来の里々（Mc1XX）から Unicode 版（Mc202-1）に移るときの、実質的な違いを知りたい → [里々 Unicode 版（Mc202-1）公開](other/satori2-launch.md)
 - 里々って何？ → [里々とは](startup/what-is-satori.md)
 - はじめてゴーストを作りたい → [はじめてのゴースト](startup/getting-started.md)
+- 動くサンプルのゴーストから始めたい → [ポストと狛犬 V2](https://github.com/ukatech/POST_and_KOMAINU_V2)（Unicode 版向けのテンプレート。バイブコーディング対応。[Releases](https://github.com/ukatech/POST_and_KOMAINU_V2/releases) から nar を入手）
 - 書き方をざっと確認したい → [チートシート](startup/cheatsheet.md)
 - ACP 版（Mc1XX）から Unicode 版（Mc2XX）に移りたい → [ACP 版との違い](other/unicode-changes.md)（`satori.dll` を置き換えるだけで、辞書もセーブデータもそのまま動きます。気をつける点はセーブデータの文字コードなど数点だけです）
 

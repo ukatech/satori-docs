@@ -217,6 +217,6 @@ OS: Windows 11
 
 このページの文・図: **[Claudia](https://ponadocs.shillest.net/claudia/)**
 
-上の絵は、里々のサンプルゴースト「ポストと狛犬V2」（櫛ヶ浜やぎ）のものです。
+上の絵は、里々のサンプルゴースト「[ポストと狛犬V2](https://github.com/ukatech/POST_and_KOMAINU_V2)」（櫛ヶ浜やぎ）のものです。Unicode 版に合わせて直したテンプレートで、バイブコーディングにも対応しています。
 
 </div>
