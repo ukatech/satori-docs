@@ -189,6 +189,7 @@
 | 分割・結合 | `（split、文字列、区切り）` `（join、区切り、文字列…）` | 分割結果は `（Ｓ０）` `（Ｓ１）`…（上書きしたくないときは内蔵の `（split_to、接頭辞、文字列、区切り）`） |
 | 置換 | `（replace、文字列、前、後）` | `（replace、abc、b、X）` → `aXc` |
 | 削除・数える | `（erase、文字列、削除する文字列）` `（count、対象、探す文字列）` | |
+| 正規表現（Mc203-1以降） | `（regex_match、対象、パターン、オプション）` `（regex_find、…）` `（regex_findall、…）` `（regex_count、…）` `（regex_replace、対象、パターン、置換後、オプション）` `（regex_replace_first、…）` `（regex_erase、…）` `（regex_erase_first、…）` `（regex_split、…）` `（regex_escape、文字列）` | オプションは `i`（大小無視）`s` `m` `x`。`（regex_match、abc123、(\d+)）（S1）` → `123`（[書き方](../ssu/regex.md)） |
 | 比較 | `（compare、A、B）` `（compare_head、…）` `（compare_tail、…）` | `_case` 付きは大文字小文字を区別する |
 | 判定 | `（length、文字列）` `（is_empty、…）` `（is_digit、…）` `（is_alpha、…）` | |
 | 変換 | `（zen2han、…）` `（han2zen、…）` `（hira2kata、…）` `（kata2hira、…）` | |

@@ -54,6 +54,7 @@ ACP 版にはなかった機能です。
 - 名前が接頭辞で始まる変数をまとめて扱う [変数の一括削除](../functions/erase-variables.md)、[変数の一括コピー](../functions/copy-variables.md)、[変数の列挙](../functions/list-variables.md)。
 - `（S0）` などを上書きせずに、指定した接頭辞の変数へ分割結果を入れる [split_to](../functions/split_to.md)。
 - ssu の [replace](../ssu/replace.md) と [erase](../ssu/erase.md) で、置換の組・削除する文字列を複数書けます（一度の走査で置換します）。
+- ssu に正規表現の関数 [regex_match](../ssu/regex_match.md) など 10 個を追加しました（Mc203-1以降。[正規表現の書き方](../ssu/regex.md)）。
 - `calc_float` でも `^`（べき乗）が使えます（[calc_float](../ssu/calc_float.md)）。
 
 ### システム変数

@@ -85,6 +85,23 @@ ssu は文字数を「文字」単位で数えます。サロゲートペアの�
 | [erase_first](erase_first.md) | 最初の 1 か所だけ削除する |
 | [count](count.md) | 出現回数を数える |
 
+### 正規表現（Mc203-1以降）
+
+書き方は [正規表現の書き方](regex.md) を参照してください。
+
+| 関数 | 説明 |
+|------|------|
+| [regex_match](regex_match.md) | 一致するか調べる（一致部分・グループを `（S0）`… に入れる） |
+| [regex_find](regex_find.md) | 最初に一致した位置を返す |
+| [regex_findall](regex_findall.md) | 一致した部分をすべて取り出す |
+| [regex_count](regex_count.md) | 一致の個数を数える |
+| [regex_replace](regex_replace.md) | 一致した部分をすべて置換する |
+| [regex_replace_first](regex_replace_first.md) | 最初の 1 か所だけ置換する |
+| [regex_erase](regex_erase.md) | 一致した部分をすべて削除する |
+| [regex_erase_first](regex_erase_first.md) | 最初の 1 か所だけ削除する |
+| [regex_split](regex_split.md) | 一致した部分で分割する |
+| [regex_escape](regex_escape.md) | 正規表現の特殊文字をエスケープする |
+
 ### 比較・判定
 
 | 関数 | 説明 |

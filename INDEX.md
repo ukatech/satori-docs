@@ -119,6 +119,7 @@
 | 計算 | [calc](ssu/calc.md) [calc_float](ssu/calc_float.md) |
 | 条件分岐 | [if](ssu/if.md) [unless](ssu/unless.md) [nswitch](ssu/nswitch.md) [switch](ssu/switch.md) [iflist](ssu/iflist.md) |
 | 文字列 | [substr](ssu/substr.md) [at](ssu/at.md) [split](ssu/split.md) [split_string](ssu/split_string.md) [join](ssu/join.md) [reverse](ssu/reverse.md) [replace](ssu/replace.md) [replace_first](ssu/replace_first.md) [erase](ssu/erase.md) [erase_first](ssu/erase_first.md) [count](ssu/count.md) |
+| 正規表現 | [書き方](ssu/regex.md) [regex_match](ssu/regex_match.md) [regex_find](ssu/regex_find.md) [regex_findall](ssu/regex_findall.md) [regex_count](ssu/regex_count.md) [regex_replace](ssu/regex_replace.md) [regex_replace_first](ssu/regex_replace_first.md) [regex_erase](ssu/regex_erase.md) [regex_erase_first](ssu/regex_erase_first.md) [regex_split](ssu/regex_split.md) [regex_escape](ssu/regex_escape.md) |
 | 比較・判定 | [compare](ssu/compare.md) [compare_case](ssu/compare_case.md) [compare_head](ssu/compare_head.md) [compare_head_case](ssu/compare_head_case.md) [compare_tail](ssu/compare_tail.md) [compare_tail_case](ssu/compare_tail_case.md) [length](ssu/length.md) [is_empty](ssu/is_empty.md) [is_digit](ssu/is_digit.md) [is_alpha](ssu/is_alpha.md) |
 | 変換 | [zen2han](ssu/zen2han.md) [han2zen](ssu/han2zen.md) [hira2kata](ssu/hira2kata.md) [kata2hira](ssu/kata2hira.md) [sprintf](ssu/sprintf.md) |
 | その他 | [choice](ssu/choice.md) [lsimg](ssu/lsimg.md) [mkdir](ssu/mkdir.md) |
