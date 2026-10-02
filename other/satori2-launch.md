@@ -145,6 +145,7 @@ SAORI は、里々が送る `Charset` ヘッダに従って動くものなら問
 - **変数の一括操作**：[変数の一括削除](../functions/erase-variables.md)、[変数の一括コピー](../functions/copy-variables.md)、[変数の列挙](../functions/list-variables.md)、[split_to](../functions/split_to.md)。
 - ssu の [replace](../ssu/replace.md) と [erase](../ssu/erase.md) で複数の組を指定できる。`calc_float` で `^` が使える。
 - YAYA と同じ `Set_loghandler` に対応し、ログ受信ツールへ渡せる。
+- **正規表現**（Mc203-1以降）：ssu に [regex_match](../ssu/regex_match.md)、[regex_find](../ssu/regex_find.md)、[regex_findall](../ssu/regex_findall.md)、[regex_count](../ssu/regex_count.md)、[regex_replace](../ssu/regex_replace.md)、[regex_replace_first](../ssu/regex_replace_first.md)、[regex_erase](../ssu/regex_erase.md)、[regex_erase_first](../ssu/regex_erase_first.md)、[regex_split](../ssu/regex_split.md)、[regex_escape](../ssu/regex_escape.md) を追加（[正規表現の書き方](../ssu/regex.md)）。
 
 ## 直った不具合
 
