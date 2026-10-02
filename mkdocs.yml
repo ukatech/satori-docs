@@ -11,6 +11,8 @@ site_dir: _site
 
 theme:
   name: material
+  # Zensical の既定は modern（新デザイン）。従来の見た目は classic
+  variant: classic
   # OGP などの <head> の追加（overrides/main.html）
   custom_dir: overrides
   logo: assets/logo.png
@@ -39,10 +41,10 @@ theme:
         icon: material/brightness-4
         name: ライトモードに切り替え
 
-# ページごとの OGP（overrides/main.html が使う）。キーは原稿のパス、image は site_url からの相対パス（1200x630）
+# ページごとの OGP（overrides/main.html が使う）。キーはページの URL（トップは ""）、image は site_url からの相対パス（1200x630）
 extra:
   ogp:
-    other/satori2-prerelease.md:
+    other/satori2-prerelease/:
       title: 里々 Unicode 版 試験版 ─ 動作確認のお願い
       description: 内部を Unicode にした里々（Mc200 系）の試験版です。手元のゴーストで動かして、従来の仕様との違いや不具合を教えてください。
       image: assets/satori2/ogp.png
@@ -56,7 +58,7 @@ extra_javascript:
 plugins:
   - search:
       lang: ja
-  - awesome-pages
+  - awesome-nav
 
 markdown_extensions:
   - tables
