@@ -17,6 +17,7 @@
 
 - `INDEX.md` の該当する表に追加する
 - 内蔵関数なら `functions/index.md`、ssu の関数なら `ssu/index.md`、システム変数なら `system/index.md` にも追加する
+- 公開済みのページを改名したら、`scripts/prepare_site.py` の `REDIRECTS` に旧パスと新パスを加える（旧 URL に転送用の HTML を置く。Zensical は mkdocs-redirects を使えないため）
 - 新しいディレクトリを作ったら、`.nav.yml` の `nav` と `scripts/prepare_site.py` の `DIRS` に加える
 
 ## 言語仕様が変わったとき
@@ -33,7 +34,7 @@
 - 設定を書く場所に注意する。`satori_conf.txt` は `＊初期化` と `＠SAORI` しか使われず、ほかの文と単語群は読み込み後に捨てられる。そのため、辞書の存在が前提のシステム変数（重複回避など）は `＊初期化` に書いても効かない。
 - SAORI（ssu を含む）の引数は、先頭が数字などのとき里々が先に計算する（`＄SAORI引数の計算`）。ssu のサンプルの結果に影響するので、`sprintf` `calc_float` `replace` などの例は必ず実機で確かめる。
 - `if`（ssu）は両方の枝を展開し、`when`（特殊形式）は選ばれた枝だけ展開する。この違いは繰り返し説明する。
-- Unicode 版と ACP 版で動作が違う点（自動ウェイトの文字数、`バイト値` など）は `other/unicode-changes.md` にまとめる。
+- Unicode 版と ACP 版で動作が違う点（`バイト値`、`sprintf` の幅など）は `other/unicode-changes.md` にまとめる。
 
 ## 実機での確認（Windows）
 

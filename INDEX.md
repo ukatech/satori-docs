@@ -11,11 +11,11 @@
 
 ## はじめての方へ
 
-- 試験版（Mc200 系）を試して、動作確認に協力したい → [里々 Unicode 版 試験版 ─ 動作確認のお願い](other/satori2-prerelease.md)
+- 従来の里々（Mc1XX）から Unicode 版（Mc202-1）に移るときの、実質的な違いを知りたい → [里々 Unicode 版（Mc202-1）公開](other/satori2-launch.md)
 - 里々って何？ → [里々とは](startup/what-is-satori.md)
 - はじめてゴーストを作りたい → [はじめてのゴースト](startup/getting-started.md)
 - 書き方をざっと確認したい → [チートシート](startup/cheatsheet.md)
-- ACP 版（Mc1XX）から Unicode 版（Mc2XX）に移りたい → [ACP 版との違い](other/unicode-changes.md)（`satori.dll` を置き換えるだけで、辞書もセーブデータもそのまま動きます。気をつける点は自動ウェイトの長さなど数点だけです）
+- ACP 版（Mc1XX）から Unicode 版（Mc2XX）に移りたい → [ACP 版との違い](other/unicode-changes.md)（`satori.dll` を置き換えるだけで、辞書もセーブデータもそのまま動きます。気をつける点はセーブデータの文字コードなど数点だけです）
 
 ## 調べたいとき
 
@@ -128,7 +128,7 @@
 
 | ファイル | 内容 |
 |---------|------|
-| [satori2-prerelease.md](other/satori2-prerelease.md) | 里々 Unicode 版 試験版 ─ 動作確認のお願い |
+| [satori2-launch.md](other/satori2-launch.md) | 里々 Unicode 版（Mc202-1）公開 |
 | [saori.md](other/saori.md) | SAORI の呼び出し |
 | [unicode-changes.md](other/unicode-changes.md) | ACP 版との違い |
 | [error-messages.md](other/error-messages.md) | エラーメッセージ・警告 |

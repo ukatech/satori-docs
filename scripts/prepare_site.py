@@ -4,9 +4,11 @@ r"""GitHub Pages 用に原稿を _site_src/ へ写す。
 - GitHub では表示できるが Python-Markdown では崩れる書き方を直す
   （段落の直後に空行なしで続くリスト・表の前に空行を入れる）
 - 表の中のコードスパンの `\|` を `|` に戻す（GitHub 向けの書き方をサイト向けに直す）
+- 改名したページの旧 URL に、新しいページへ転送する HTML を置く（REDIRECTS）
 - `_名前_` のように _ で挟んだ書き方（斜体になってしまう）を警告する
 原稿そのものは書き換えない。
 """
+import json
 import os
 import re
 import shutil
@@ -14,6 +16,11 @@ import sys
 
 ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 OUT = os.path.join(ROOT, '_site_src')
+SITE_URL = 'https://ukatech.github.io/satori-docs/'
+# 改名したページ（旧パス: 新パス。docs_dir からの相対）。旧 URL に転送用の HTML を置く
+REDIRECTS = {
+    'other/satori2-prerelease.md': 'other/satori2-launch.md',
+}
 DIRS = ['startup', 'grammar', 'shiori', 'system', 'functions', 'ssu', 'other']
 
 BLOCK_START = re.compile(r'^\s*(?:[-*+]\s|\d+\.\s|\|)')
@@ -75,6 +82,37 @@ def copy_md(src, dst):
         f.write(fix_markdown(text))
 
 
+REDIRECT_HTML = """<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ページが移動しました</title>
+<link rel="canonical" href="{url}">
+<meta http-equiv="refresh" content="0; url={target}">
+<meta name="robots" content="noindex">
+<script>location.replace({target_js});</script>
+</head>
+<body>
+<p>このページは移動しました。自動で移動しない場合は <a href="{target}">{target}</a> を開いてください。</p>
+</body>
+</html>
+"""
+
+
+def write_redirects():
+    site_url = SITE_URL.rstrip('/') + '/'
+    for old, new in REDIRECTS.items():
+        old_dir = old[:-len('.md')]
+        new_dir = new[:-len('.md')]
+        # 旧ページは <旧>/ に出るので、サイト内の相対パスで新ページの <新>/ を指す
+        target = os.path.relpath(new_dir, old_dir).replace(os.sep, '/') + '/'
+        dst = os.path.join(OUT, old_dir, 'index.html')
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(REDIRECT_HTML.format(url=site_url + new_dir + '/', target=target,
+                                         target_js=json.dumps(target)))
+
+
 def main():
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
@@ -86,6 +124,7 @@ def main():
         for name in sorted(os.listdir(os.path.join(ROOT, d))):
             if name.endswith('.md'):
                 copy_md(os.path.join(ROOT, d, name), os.path.join(OUT, d, name))
+    write_redirects()
 
 
 if __name__ == '__main__':

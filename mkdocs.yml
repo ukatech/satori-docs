@@ -44,9 +44,9 @@ theme:
 # ページごとの OGP（overrides/main.html が使う）。キーはページの URL（トップは ""）、image は site_url からの相対パス（1200x630）
 extra:
   ogp:
-    other/satori2-prerelease/:
-      title: 里々 Unicode 版 試験版 ─ 動作確認のお願い
-      description: 内部を Unicode にした里々（Mc200 系）の試験版です。手元のゴーストで動かして、従来の仕様との違いや不具合を教えてください。
+    other/satori2-launch/:
+      title: 里々 Unicode 版（Mc202-1）公開
+      description: 内部を Unicode にした里々を正式版として公開します。今までの辞書・セーブデータ・SAORI はそのまま動きます。ゴースト作者が気にする違いをまとめました。
       image: assets/satori2/ogp.png
 
 extra_css:
