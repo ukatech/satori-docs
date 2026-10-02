@@ -15,7 +15,7 @@
 - 里々って何？ → [里々とは](startup/what-is-satori.md)
 - はじめてゴーストを作りたい → [はじめてのゴースト](startup/getting-started.md)
 - 書き方をざっと確認したい → [チートシート](startup/cheatsheet.md)
-- ACP 版（Mc1XX）から Unicode 版（Mc2XX）に移りたい → [ACP 版との違い](other/unicode-changes.md)
+- ACP 版（Mc1XX）から Unicode 版（Mc2XX）に移りたい → [ACP 版との違い](other/unicode-changes.md)（`satori.dll` を置き換えるだけで、辞書もセーブデータもそのまま動きます。気をつける点は自動ウェイトの長さなど数点だけです）
 
 ## 調べたいとき
 
