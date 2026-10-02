@@ -4,7 +4,7 @@
 
 - `＄名前＝式` の右辺
 - 文や単語群の[採用条件式](02-talks-and-words.md#採用条件式)
-- `＞名前<タブ>式` のジャンプ条件
+- `＞名前【タブ】式` のジャンプ条件
 - [when](../functions/when.md) [whenlist](../functions/whenlist.md) [times](../functions/times.md) [while](../functions/while.md) [for](../functions/for.md) の引数
 - ssu の [calc](../ssu/calc.md) など
 
@@ -52,7 +52,7 @@
 
 ```
 ＄好感度＝（好感度）+1
-＞仲良しトーク	（好感度）>=50
-＊OnBoot	(（現在時）>=5)&&(（現在時）<10)
+＞仲良しトーク【タブ】（好感度）>=50
+＊OnBoot【タブ】(（現在時）>=5)&&(（現在時）<10)
 おはようございます。
 ```

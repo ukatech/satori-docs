@@ -50,6 +50,9 @@ extra:
 extra_css:
   - assets/extra.css
 
+extra_javascript:
+  - assets/copy-tab.js
+
 plugins:
   - search:
       lang: ja
