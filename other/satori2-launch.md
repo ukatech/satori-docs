@@ -218,6 +218,6 @@ OS: Windows 11
 
 このページの文・図: **[Claudia](https://ponadocs.shillest.net/claudia/)**
 
-上の絵は、里々のサンプルゴースト「[ポストと狛犬V2](https://github.com/ukatech/POST_and_KOMAINU_V2)」（櫛ヶ浜やぎ）のものです。Unicode 版に合わせて直したテンプレートで、バイブコーディングにも対応しています。
+上の絵は、里々のサンプルゴースト「[ポストと狛犬V2](https://github.com/ukatech/POST_and_KOMAINU_V2)」（櫛ヶ浜やぎ）のものです。Unicode 版に合わせて直したテンプレートで、バイブコーディングにも対応しています。バイブコーディングで里々を書くときは、AI ツール向けの里々開発支援 [ukagaka-satori-helper](https://github.com/earlduant/ukagaka-satori-helper) も参照してください。
 
 </div>

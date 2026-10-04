@@ -3,7 +3,7 @@
 里々のゴーストの最小構成と、動作確認の手順です。
 
 !!! tip "動くサンプルから始めたいとき"
-    ファイルを一から揃えず、動くゴーストを土台にしたいときは、サンプルゴースト[ポストと狛犬 V2](https://github.com/ukatech/POST_and_KOMAINU_V2)があります。櫛ヶ浜やぎ氏の原作を、Unicode 版の里々に合わせて現代的に直したテンプレートで、AI コーディングエージェントで開発する「バイブコーディング」にも対応しています。[Releases](https://github.com/ukatech/POST_and_KOMAINU_V2/releases) から nar をダウンロードしてください。辞書を書く練習台にも、自分のゴーストの土台にもなります。
+    ファイルを一から揃えず、動くゴーストを土台にしたいときは、サンプルゴースト[ポストと狛犬 V2](https://github.com/ukatech/POST_and_KOMAINU_V2)があります。櫛ヶ浜やぎ氏の原作を、Unicode 版の里々に合わせて現代的に直したテンプレートで、AI コーディングエージェントで開発する「バイブコーディング」にも対応しています。バイブコーディングで里々を書くときは、Claude Code・Codex・Antigravity などに里々の開発（画面デザイン、実装可否の調査、バグ修正、動作検証）を手伝わせる[ukagaka-satori-helper](https://github.com/earlduant/ukagaka-satori-helper)も参照してください。[Releases](https://github.com/ukatech/POST_and_KOMAINU_V2/releases) から nar をダウンロードしてください。辞書を書く練習台にも、自分のゴーストの土台にもなります。
 
 ## 必要なファイル
 
