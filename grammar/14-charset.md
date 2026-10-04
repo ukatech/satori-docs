@@ -32,6 +32,7 @@
 ## SAORI・SSTP・ssu
 
 - 里々から SAORI を呼ぶときは、`Charset: UTF-8` で送り、応答は応答の `Charset` ヘッダ（なければ内容の判定）で読みます。
+- ただし、`GET Version` の応答に `Charset` ヘッダがない SAORI には `Charset: Shift_JIS` で送り、`Charset` のない応答も Shift_JIS として読みます（Mc203-2以降。[SAORI の通信](../other/saori.md#通信)）。
 - SSTP（`get_property` など）は UTF-8 です。
 - ssu を SAORI として呼んだとき、応答は常に UTF-8 です。
 

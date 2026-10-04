@@ -24,7 +24,7 @@ Unicode 版（`Mc2XX`）は、ACP 版（`Mc1XX`、Shift_JIS ベース）から�
 | `calc` の文字列の長さ比較 | バイト数 | 文字数 |
 | `（バイト値、n）` | 1 バイトの文字を返す | n を Unicode のコードポイントとして 1 文字を返す |
 | SHIORI の通信 | Shift_JIS | リクエストの `Charset` に従う |
-| SAORI・SSTP・ssu との通信 | ACP | UTF-8 |
+| SAORI・SSTP・ssu との通信 | ACP | UTF-8（`GET Version` に `Charset` を返さない SAORI には Shift_JIS。Mc203-2以降） |
 | 括弧展開サイズ制限 | バイト数 | 文字数（実質約 2 倍） |
 | サロゲートペア | 対象外 | 1 文字として扱う |
 | コミュニケートの点数 | バイト数に基づく | 文字数に基づく（一致した語が全角のみなら同じ点数） |
@@ -128,6 +128,7 @@ ACP 版や、Unicode 版の初期のものから直っている点を、里々�
 
 ### SAORI・ログ・ツール
 
+- 華和梨の SAORI モード（`kawari.dll`）のように、`Charset` ヘッダを見ずに Shift_JIS として読む SAORI へも UTF-8 で送っていたため、日本語を含む呼び出し名や引数が通らず、結果が返りませんでした（Mc201-1〜Mc203-1）。`GET Version` の応答に `Charset` がない SAORI には、ACP 版と同じく Shift_JIS で送ります（Mc203-2以降。[SAORI の通信](saori.md#通信)）。
 - YAYA as SAORI（`yaya.dll`）で古い `ayasaori.aym` を使うと、最初の呼び出しの引数や結果だけが文字化けしていました。`GET Version` の応答に `Charset` がない SAORI には、直後に何もしない `EXECUTE` を 1 回送って読み捨てます（[SAORI の通信](saori.md#通信)）。
 - SAORI Basic（コンソールアプリ）：出力が 4KB を超えると 10 秒待たされたり、出力し続ける相手だとタイムアウト後も戻れなかったりしました。出力を読みながら待ち、タイムアウトした相手は終了させます（1 回に読む量と総量 16MB に上限があります）。
 - tama（tamac）などへのエラーログ（`[ERROR]` の行）が、遅れたり、つながったり、欠けたりしていました。`calc` の失敗などの実行時エラーが `[ERROR]` として届かず、応答に `ErrorLevel: critical` も付かなかった点も直っています。終了の通知（`E_END`）の値も YAYA に合わせました（5 → 6）。
