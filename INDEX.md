@@ -2,7 +2,7 @@
 
 伺か（ukagaka）の SHIORI「里々（SATORI）」と、同梱の SAORI「ssu」の仕様書です。里々のソースコード（Unicode 版）から読み取れる動作をまとめています。
 
-間違いやわかりにくいところを見つけたら、[Issues](https://github.com/ukatech/satori-docs/issues) で教えてください。
+間違いやわかりにくいところを見つけたら、[整備班BTS](https://bts.shillest.net/)（報告フォーム）で教えてください。GitHub に慣れている方は、[Issues](https://github.com/ukatech/satori-docs/issues) や Pull Request でも構いません。
 
 ## ダウンロード・ソース
 

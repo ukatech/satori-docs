@@ -155,9 +155,9 @@ SAORI は、里々が送る `Charset` ヘッダに従って動くものなら問
 
 従来の版と違う結果になったもの、エラーになるようになったもの、仕様書と実際の動きが食い違うものがあれば、教えてください。GitHub のアカウントがなくても大丈夫です。
 
-- [GitHub Issues](https://github.com/ukatech/satoriya-shiori/issues)（いちばん追いやすい）
-- 作業チームのひとり、ponapalt の [X（@ponapalt）](https://x.com/ponapalt)
-- 同じく ponapalt の [うかどん（@ponapalt）](https://ukadon.shillest.net/@ponapalt)
+- まずは [整備班BTS](https://bts.shillest.net/)（報告フォーム）をお使いください
+- GitHub に慣れている方は、[GitHub Issues](https://github.com/ukatech/satoriya-shiori/issues) や Pull Request でも構いません（追いやすいのはこちらです）
+- 作業チームのひとり、ponapalt の [X（@ponapalt）](https://x.com/ponapalt)や[うかどん（@ponapalt）](https://ukadon.shillest.net/@ponapalt)でも受け付けています
 
 次のような内容を書いていただけると、原因を追いやすくなります。「なんとなくおかしい」だけでも構いません。
 
