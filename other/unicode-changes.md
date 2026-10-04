@@ -88,6 +88,7 @@ ACP 版や、Unicode 版の初期のものから直っている点を、里々�
 - [重複回避](../grammar/12-overlap-avoidance.md#条件式との関係)：`単語の追加` `追加単語の削除` をすると、そのあと重複回避の記録（使用済みかどうか、順番の位置）が消えて、同じ単語が続けて選ばれたり、順番が最初に戻ったりすることがありました。今は残った候補の記録が引き継がれます（Mc202-2以降）。
 - [重複回避](../grammar/12-overlap-avoidance.md#条件式との関係)：`正順` `逆順` で、直前に選んだ候補が採用条件で外れると、辞書の定義順や環境によって、最初に戻ることがありました。今は順番どおりの次の候補から続けます（Mc202-2以降）。
 - [変数の列挙](../functions/list-variables.md)：接頭辞を空にすると、すべての変数ではなく空文字列が返っていました。今はすべての変数を返します（Mc203-1以降。[issue #1](https://github.com/ukatech/satori-docs/issues/1)）。
+- [なでられ](../shiori/default-behaviors.md)：Windows 以外のビルド（POSIX）では `Status` ヘッダを見ていなかったため、喋っている最中などにもなでられに反応していました。Windows と同じく反応しないようにしました（Mc203-4以降）。
 
 ### 計算（`calc`・式）
 
@@ -106,7 +107,7 @@ ACP 版や、Unicode 版の初期のものから直っている点を、里々�
 - [substr](../ssu/substr.md)：開始位置が 1 以上で長さが `2147483647` のような大きな数だと異常終了していました。
 - `join`：引数が区切りだけのとき、範囲外を読んでいました。
 - [reverse](../ssu/reverse.md)：長い文字列（20 万文字）で数十秒止まっていました。
-- [mkdir](../ssu/mkdir.md) と [lsimg](../ssu/lsimg.md) が、外部からのイベント（`SecurityLevel: external`）でも実行できていました。`local` のときだけ実行します（ssu.dll を単体で使うときも、リクエストの `SecurityLevel` に従います）。`lsimg` が Windows 以外で値を返さない問題も直っています。
+- [mkdir](../ssu/mkdir.md) と [lsimg](../ssu/lsimg.md) が、外部からのイベント（`SecurityLevel: external`）でも実行できていました。`local` のときだけ実行します（ssu.dll を単体で使うときも、リクエストの `SecurityLevel` に従います）。`lsimg` は Windows 以外では常に `0` を返していましたが、POSIX でも動作するようにしました（Mc203-4以降）。
 
 ### 異常終了・無限ループ・止まる問題
 
