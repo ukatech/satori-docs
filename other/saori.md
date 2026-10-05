@@ -43,6 +43,7 @@
 ## 通信
 
 - 里々から SAORI へは `Charset: UTF-8` で送ります。SAORI が `loadu` をエクスポートしていれば UTF-8 のパスで、なければ従来の `load` で呼びます。
+- `GET Version` の応答の `Charset` が、送ろうとした `UTF-8` と違う SAORI（葉梨の `hanasi.dll` のように、`Charset: Shift_JIS` を返しつつ常に Shift_JIS で読み書きするもの）には、Mc203-5以降、応答の文字コードで送ります。それまでは UTF-8 で送っていたため文字化けしていました。
 - `GET Version` の応答に `Charset` ヘッダがない（または空の）SAORI には、Mc203-2以降、ACP 版と同じく `Charset: Shift_JIS` で送ります。華和梨の SAORI モードのように、`Charset` ヘッダを見ずに Shift_JIS として読む SAORI があるためです。Shift_JIS にない文字（絵文字など）は `?` になります。
 - `GET Version` の応答に `Charset` ヘッダがない（または空の）SAORI には、Mc201-9以降、直後に何もしない `EXECUTE`（`Argument0` が空）を 1 回送り、応答を読み捨てます。YAYA as SAORI の古い `ayasaori.aym` は、`GET Version` で `Charset` を返さず、その後の最初の `EXECUTE` だけ文字コードの設定が合わずに文字化けするためです。`ayasaori.aym` を `yaya-as-saori` の現行版に差し替えれば、この呼び出しは行われません。
 - 応答は、応答の `Charset` ヘッダに従って読みます。ヘッダがなければ、Shift_JIS で送った SAORI の応答は Shift_JIS として、それ以外は内容で判定して読みます（Mc203-2以降）。

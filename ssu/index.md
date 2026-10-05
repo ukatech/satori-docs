@@ -17,7 +17,7 @@ ssu は里々に同梱されている文字列・計算・条件分岐用のユ�
 - 同じ名前を `＠SAORI` で自分で登録していた場合は、そちらが優先されます。
 - 引数の区切りは `,` `、` `､` `，` とバイト値 1 のどれでも構いません。詳しくは[引数区切り](../grammar/05-kakko.md#引数区切り)を参照してください。
 
-ssu.dll を単体の SAORI として呼び出すこともできます（`ssu.dll` を `SSU_SAORI_CALL_INTERFACE` を定義してビルドしたもの）。その場合は最初の引数（`Argument0`）が関数名になり、以降が引数になります。応答の `Charset` は常に UTF-8 です。
+ssu.dll を単体の SAORI として呼び出すこともできます（`ssu.dll` を `SSU_SAORI_CALL_INTERFACE` を定義してビルドしたもの）。その場合は最初の引数（`Argument0`）が関数名になり、以降が引数になります。応答の `Charset` は、要求の `Charset` に合わせます（`Charset` がなく ASCII だけの要求には Shift_JIS。Mc203-5以降。Mc203-4 までは常に UTF-8）。
 
 ## 引数の計算
 

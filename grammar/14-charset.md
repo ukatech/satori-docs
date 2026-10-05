@@ -24,7 +24,7 @@
 
 ## SHIORI の通信
 
-- リクエストの `Charset` ヘッダに従って解釈し、**同じ文字コード**で応答します。`Charset` がない場合は、内容から判定します。
+- リクエストの `Charset` ヘッダに従って解釈し、**同じ文字コード**で応答します。`Charset` がない場合は、内容から判定します。ただし ASCII だけの要求（SHIORI/2.x など、文字コードを示さない古い呼び出し）には、ACP 版と同じく Shift_JIS で応答します（Mc203-5以降）。
 - ベースウェア（SSP）は、最初に UTF-8 で問い合わせを行い、UTF-8 で応答すれば以降も UTF-8 で通信します。
 - Shift_JIS で応答する場合、Shift_JIS にない文字は `?` になります。
 - `loadu`（UTF-8 のパスで `load`）に対応しています。
@@ -32,9 +32,9 @@
 ## SAORI・SSTP・ssu
 
 - 里々から SAORI を呼ぶときは、`Charset: UTF-8` で送り、応答は応答の `Charset` ヘッダ（なければ内容の判定）で読みます。
-- ただし、`GET Version` の応答に `Charset` ヘッダがない SAORI には `Charset: Shift_JIS` で送り、`Charset` のない応答も Shift_JIS として読みます（Mc203-2以降。[SAORI の通信](../other/saori.md#通信)）。
+- ただし、`GET Version` の応答に `Charset` ヘッダがない SAORI には `Charset: Shift_JIS` で送り、`Charset` のない応答も Shift_JIS として読みます（Mc203-2以降）。`Charset` を返す SAORI が、送った値と違う文字コード（Shift_JIS など）を返したときは、その文字コードで送ります（Mc203-5以降。[SAORI の通信](../other/saori.md#通信)）。
 - SSTP（`get_property` など）は UTF-8 です。
-- ssu を SAORI として呼んだとき、応答は常に UTF-8 です。
+- ssu を SAORI として呼んだとき、応答は要求の `Charset` に合わせます（`Charset` がなく ASCII だけの要求には Shift_JIS。Mc203-5以降。Mc203-4 までは常に UTF-8）。
 
 ## UTF-8 辞書で使う記号
 
