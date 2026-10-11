@@ -25,7 +25,7 @@
 
 `SecurityLevel` が `local` でないリクエスト（外部からのイベントなど）では、次の関数は実行されず、空文字列になります（ログに `local/Localでないので蹴りました` と出ます）。
 
-`set` `loop` `sync` `remember` `call` `vncall` `equal` `変数の一括削除` `変数の一括コピー` `split_to` `get_property` `set_property` `load_saori` `単語の追加` `追加単語の削除` `追加単語の全削除`
+`set` `loop` `sync` `remember` `call` `vncall` `equal` `変数の一括削除` `変数の一括コピー` `split_to` `get_property` `set_property` `execute_sstp` `load_saori` `単語の追加` `追加単語の削除` `追加単語の全削除`
 
 `nop` `変数の列挙` `バイト値` `合成単語群` `文の数` と特殊形式は、外部からのイベントでも実行できます。外部イベントを許可する方法は[プロトコルとリクエスト処理](../shiori/protocol.md#外部からのイベントの許可)を参照してください。
 
@@ -75,4 +75,5 @@
 |------|------|
 | [get_property](get_property.md) | 本体のプロパティを取得する |
 | [set_property](set_property.md) | 本体のプロパティを設定する |
+| [execute_sstp](execute_sstp.md) | 本体に SSTP の EXECUTE を送り、結果を受け取る |
 | [load_saori](load_saori.md) | SAORI を実行時に登録する |

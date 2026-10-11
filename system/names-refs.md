@@ -8,7 +8,7 @@
 | `（Rの数）` | Reference の個数 |
 | `（A0）` `（A1）`… | [call](../functions/call.md) / [vncall](../functions/vncall.md) で渡された引数 |
 | `（Aの数）` | 渡された引数の個数（呼ばれていなければ 0） |
-| `（S0）` `（S1）`… | 直前の SAORI（ssu を含む）の戻り値（Value0・Value1…） |
+| `（S0）` `（S1）`… | 直前の SAORI（ssu を含む）の戻り値（Value0・Value1…）、または [execute_sstp](../functions/execute_sstp.md) の追加データ |
 | `（Sの数）` | 戻り値の個数 |
 | `（H1）` `（H2）`… | このトークですでに展開した `（）` の結果の履歴 |
 | `（C0）` `（C1）`… | [times](../functions/times.md) / [for](../functions/for.md) / [while](../functions/while.md) のループカウンタ |
@@ -23,7 +23,7 @@
 
 ## Ｓ（SAORI の戻り値）
 
-SAORI が返した `Value0`… が入ります。`＄Ｓ０` のようにも書けますが、`Sの数` は代入できません。SAORI を呼ぶたびに（戻り値があるとき）内容が入れ替わります。セーブデータには保存されません。
+SAORI が返した `Value0`… が入ります。[execute_sstp](../functions/execute_sstp.md) では、応答の追加データが 1 行ずつ入ります（Mc204-1以降）。`＄Ｓ０` のようにも書けますが、`Sの数` は代入できません。SAORI を呼ぶたびに（戻り値があるとき）内容が入れ替わります。セーブデータには保存されません。
 
 ## Ｈ（履歴）
 

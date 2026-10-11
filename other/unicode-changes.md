@@ -56,6 +56,7 @@ ACP 版にはなかった機能です。
 - ssu の [replace](../ssu/replace.md) と [erase](../ssu/erase.md) で、置換の組・削除する文字列を複数書けます（一度の走査で置換します）。
 - ssu に正規表現の関数 [regex_match](../ssu/regex_match.md) など 10 個を追加しました（Mc203-1以降。[正規表現の書き方](../ssu/regex.md)）。
 - `calc_float` でも `^`（べき乗）が使えます（[calc_float](../ssu/calc_float.md)）。
+- 本体に任意の SSTP の `EXECUTE` を送る [execute_sstp](../functions/execute_sstp.md)。追加データの全行が `（S0）`… に、応答コードが `（SSTP応答コード）` に入ります（Mc204-1以降）。
 
 ### システム変数
 
@@ -123,6 +124,7 @@ ACP 版や、Unicode 版の初期のものから直っている点を、里々�
 - 展開中に `単語の追加` などで単語群が変わっても、選んだ単語の展開が壊れません。`＄変数＝式` の代入先も、式の展開中に変数や `Ｒ`・`Ｓ` が増減しても壊れません。
 - [split_to](../functions/split_to.md)：`接頭辞の数` の変数に巨大な値があると、何十億回も回っていました（添字の上限は 65536 です）。
 - `Reference` の足りないリクエスト（`OnSecondChange` など）や、長押しの直後に別のクリックをしたときの `○○ホールド` の処理で、範囲外を読んでいました。足りない分は空として扱います。
+- [get_property](../functions/get_property.md) / [set_property](../functions/set_property.md) が本体の応答を無期限に待っていたため、本体が応答できない状態だと止まったままになりました。5 秒で打ち切ります（Mc204-1以降）。
 
 ### 速度
 
@@ -131,6 +133,7 @@ ACP 版や、Unicode 版の初期のものから直っている点を、里々�
 
 ### SAORI・ログ・ツール
 
+- [get_property](../functions/get_property.md) をウィンドウハンドルが分かる前に呼ぶと、以後 FMO からウィンドウハンドルを取り直さなくなっていました。応答のヘッダを読み飛ばさずに値を取っていた点、プロパティ名の改行で要求のヘッダを書き足せた点も直っています（Mc204-1以降）。
 - 華和梨の SAORI モード（`kawari.dll`）のように、`Charset` ヘッダを見ずに Shift_JIS として読む SAORI へも UTF-8 で送っていたため、日本語を含む呼び出し名や引数が通らず、結果が返りませんでした（Mc201-1〜Mc203-1）。`GET Version` の応答に `Charset` がない SAORI には、ACP 版と同じく Shift_JIS で送ります（Mc203-2以降。[SAORI の通信](saori.md#通信)）。
 - 葉梨の `hanasi.dll` のように、`GET Version` の応答で `Charset: Shift_JIS` を返しつつ常に Shift_JIS で読み書きする SAORI へも UTF-8 で送っていたため、文字化けしていました。応答の `Charset` が送った値と違うときは、応答の文字コードで送ります（Mc203-5以降。[SAORI の通信](saori.md#通信)）。
 - ssu.dll を単体の SAORI として呼ぶと、要求の `Charset` に関係なく常に UTF-8 で返していました。要求の `Charset` に合わせます。`Charset` がなく ASCII だけの要求（SHIORI/2.x や古い SAORI 呼び出し元）には、ACP 版と同じく Shift_JIS で返します（Mc203-5以降）。

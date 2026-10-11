@@ -168,6 +168,8 @@
 | [文の数](../functions/talk-count.md) | `（文の数、名前）` | 文の数 |
 | [単語の追加](../functions/add-word.md) | `（単語の追加、単語群、単語）` | 実行時に単語を追加（セーブされる） |
 | [split_to](../functions/split_to.md) | `（split_to、接頭辞、文字列、区切り）` | 分割して、`接頭辞0` `接頭辞1`… の変数に入れる |
+| [get_property](../functions/get_property.md) | `（get_property、名前、既定値）` | 本体のプロパティを取得 |
+| [execute_sstp](../functions/execute_sstp.md) | `（execute_sstp、コマンド、引数…）` | 本体に SSTP の EXECUTE を送る。全行は `（S0）`…、応答コードは `（SSTP応答コード）` |
 
 !!! note "ローカルのみの関数"
     `set` `call` `loop` などは、`SecurityLevel: local` でないリクエスト（外部からのイベント）では実行されず、空になります。一覧は[内蔵関数](../functions/index.md#実行できる条件ローカルのみ)にあります。

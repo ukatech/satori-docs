@@ -99,6 +99,7 @@
 | `ヘッダ名` | リクエストのヘッダの値（`Sender` `Status` `Reference0` など。ほかの名前より後に判定される） |
 | `pwd` | ゴーストのフォルダ |
 | `本体の所在` | 本体（ベースウェア）の実行ファイルのあるフォルダ（Windows のみ） |
+| `SSTP応答コード` | 直前の [execute_sstp](../functions/execute_sstp.md)・[get_property](../functions/get_property.md)・[set_property](../functions/set_property.md) の応答コード（`200` `204` など。送れなかった・応答がなかったときは `0`）。Mc204-1以降 |
 | `全変数列挙` | 全変数を `＄名前【タブ】値` の形で列挙（デバッグ有効かつローカルのみ） |
 
 ## その他
