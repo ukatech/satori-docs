@@ -20,7 +20,7 @@
 - 同じ呼び出し名を複数登録するとエラーになります。
 - 実行中に登録するときは [load_saori](../functions/load_saori.md) を使います。
 - `saori/ssu.dll` を指定すると、内蔵の [ssu](../ssu/index.md) が使われます（登録しなくても、ssu の関数名は自動で登録されます）。
-- `saori/internal_crypto.dll` のように、実体のない `internal_` で始まる名前を指定すると、本体（SSP）が内蔵するモジュールを呼べます（[本体の内蔵モジュール](#本体の内蔵モジュール)。Mc205-1以降）。
+- `saori/internal_crypto.dll` のように、実体のない `internal_` で始まる名前を指定すると、本体（SSP）が内蔵するモジュールを呼べます（[本体の内蔵モジュール](#本体の内蔵モジュール)。Mc205-1以降）。Mc205-2以降は、登録しなくても `（internal_crypto、…）` のようにモジュール名で呼べます（[登録なしの呼び出し](#登録なしの呼び出し)）。
 
 ## 種類
 
@@ -78,6 +78,25 @@ convert,saori/internal_data.dll,Convert
 - `SecurityLevel` は里々の実行権限を送りますが、規格では、Direct SSTP は常に `Local` として扱われ、ヘッダの値は見られません。外部から呼ばれた処理でも、内蔵モジュールの `--data-in=file`（ファイルの読み込み）などが `Local` の権限で動くことになるので、`external` のときに呼ばない、引数に外部の値を入れない、といった注意が必要です。
 - Windows 版だけです。Linux / macOS 版では、ファイルがなければ `プラグインが存在しません。` になります。
 
+### 登録なしの呼び出し
+
+Mc205-2以降、`internal_` で始まる内蔵モジュールは、`＠SAORI` に書かなくても、モジュール名をそのまま呼び出し名にして呼べます。
+
+```
+（internal_crypto、Digest、sha256、abc）
+（internal_random、UUID）
+（internal_crypto、HashPassword、secret、--async=OnHashDone）
+```
+
+- `Argument0` が関数名、`Argument1` 以降がその関数の引数です（登録したときに定義済み引数で渡していたものも、ここに書きます）。
+- 登録されていない `internal_` で始まる名前が初めて呼ばれたとき、里々は本体に `internal_system` の `ListModules` を送って内蔵モジュールの一覧を取得し、一覧にある名前なら `呼び出し名,saori/<小文字の名前>.dll` と登録したのと同じように扱います。一覧は辞書の読み込み（`load`）ごとに 1 回だけ取得します。
+- モジュール名の大文字小文字は区別しません（`（INTERNAL_Crypto、…）` でも呼べます）。英数字と `_` 以外を含む名前は対象外です。
+- 一覧にない名前、本体が SAORI over DirectSSTP に対応していない場合（SSP 2.9.12以前）は、ほかの名前と同じく `（名前） not found.` になり、`（）` はそのまま残ります。
+- 本体に `internal_system` がない場合（SSP 2.9.13）は、一覧を確かめずに `internal_` で始まる名前をすべて内蔵モジュールとして扱います。
+- 本体のウィンドウが分かる（`hwnd` の通知を受ける）前は一覧を取得できないので、解決されません。次の呼び出しで再び取得を試みます。
+- `＠SAORI` に同じ呼び出し名を登録していれば、そちらが使われます。別名や定義済み引数を付けたいときは、これまでどおり登録してください。
+- Windows 版だけです。
+
 ## エラー
 
 | ログの内容 | 意味 |
@@ -89,6 +108,8 @@ convert,saori/internal_data.dll,Convert
 | `400 Bad Request / 呼び出しの不備` | SAORI が 400 を返した |
 | `500 Internal Server Error / saori内でのエラー` | SAORI が 500 を返した |
 | `SAORI over DirectSSTP : 本体のウィンドウがまだ分からないため、送れませんでした。` | 内蔵モジュールを呼んだが、本体のウィンドウが分からない |
+| `SAORI over DirectSSTP : 名前 を本体の内蔵モジュールとして登録しました。` | 登録なしで呼んだ `internal_` の名前を登録した（Mc205-2以降。エラーではない） |
+| `SAORI over DirectSSTP : 本体の内蔵モジュールを使えません。(理由)` | 内蔵モジュールの一覧を取得できなかった。以後、登録なしの呼び出しは解決しない（Mc205-2以降） |
 
 これらのログは `DLLのパス - 呼び出し名 : 内容` の形式です。内蔵の ssu を使っている（`saori\ssu.dll` のファイルがない）場合、Mc201-6以降は DLL のパスの代わりに `(internal ssu)` と表示されます。
 
