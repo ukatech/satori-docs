@@ -57,6 +57,7 @@ ACP 版にはなかった機能です。
 - ssu に正規表現の関数 [regex_match](../ssu/regex_match.md) など 10 個を追加しました（Mc203-1以降。[正規表現の書き方](../ssu/regex.md)）。
 - `calc_float` でも `^`（べき乗）が使えます（[calc_float](../ssu/calc_float.md)）。
 - 本体に任意の SSTP の `EXECUTE` を送る [execute_sstp](../functions/execute_sstp.md)。追加データの全行が `（S0）`… に、応答コードが `（SSTP応答コード）` に入ります（Mc204-1以降）。
+- ssu の正規表現（`regex_` で始まる関数）のエンジンを [uka_regexp](https://github.com/ukatech/uka_regexp) に替えました（Mc205-3以降）。パターンの中で `(?&名前)` `\g<名前>` のようにパターンに無い名前を呼ぶと、`（名前）` の展開結果が取り込まれます（[サブルーチン呼び出し](../ssu/regex.md#パターンの中から里々の名前を呼ぶサブルーチン呼び出し)）。書式の誤りがエラーとして報告されるようになり、名前付きグループの番号は PCRE2 と同じ開き括弧の順になりました。
 
 ### システム変数
 
