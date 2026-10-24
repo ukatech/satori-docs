@@ -1,6 +1,6 @@
 # replace_first
 
-**Category:** 置換・削除
+**Category:** 置換・削除・数え上げ
 
 ## 書式
 

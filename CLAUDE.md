@@ -17,6 +17,7 @@
 
 - `INDEX.md` の該当する表に追加する
 - 内蔵関数なら `functions/index.md`、ssu の関数なら `ssu/index.md`、システム変数なら `system/index.md` にも追加する
+- 内蔵関数・ssu の関数は、`index.md` の「### 分類」の表に 1 回だけ載せ、ページの `**Category:**` 行を分類名と合わせる（末尾の `（Mc203-1以降）` のような注記は比べない）。サイトではこの分類ごとに 1 ページにまとめるため、載せ忘れや食い違いは `scripts/prepare_site.py` が止める。新しい分類を作ったら、`prepare_site.py` の `GROUP_PAGES` にページ名（英字。その分類のページ名と重ならないもの）も加える
 - 公開済みのページを改名したら、`scripts/prepare_site.py` の `REDIRECTS` に旧パスと新パスを加える（旧 URL に転送用の HTML を置く。Zensical は mkdocs-redirects を使えないため）
 - 新しいディレクトリを作ったら、`.nav.yml` の `nav` と `scripts/prepare_site.py` の `DIRS` に加える
 
@@ -77,6 +78,8 @@
 `main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が Zensical（Material for MkDocs の後継。Material テーマ互換）でビルドし、https://ukatech.github.io/satori-docs/ に公開する。ビルドは `zensical build --strict` で、リンク切れ・アンカー切れがあると失敗する。
 
 - 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる
+- 内蔵関数（`functions/`）と ssu（`ssu/`）は、サイトでは `index.md` の分類ごとの 1 ページ（`functions/variables/`、`ssu/extract/` など）にまとめて出す。`index.md` 自体は手書きのまま 1 ページで出す。文法（`grammar/01〜15`）も 1 ページ（`grammar/`）にまとめる。原稿は 1 ファイル 1 ページのまま書き、リンクも `../functions/set.md` や `05-kakko.md#引数区切り` と従来どおり書く（`prepare_site.py` がまとめたページの見出しへのリンクに書き換える。リンク先の見出しが無いとエラーで止まる）
+- まとめた元ページの URL（`functions/set/` など）には、移動先へ飛ばすだけの HTML を `prepare_site.py` が置く。まとめたページでは、関数名（ssu の `regex.md` など解説のページは、その節）が H2、関数の中の節（書式・引数など）が H4 で、見出しの id は `set`（ファイル名）、`set-書式` の形になる。右の目次は `toc_depth: 3` により関数名だけになる
 - 設定は `mkdocs.yml` をそのまま読ませている。左メニューの章立ては `.nav.yml`（mkdocs-awesome-nav）、各ページの名前は H1 から決まる
 - GitHub では表示できても MkDocs（Python-Markdown）では崩れる書き方がある。段落の直後に空行なしで続くリストや表は `prepare_site.py` が空行を補うので、原稿は GitHub 向けのままでよい。表の中のコードスパンの `|` は GitHub 向けに `\|` と書く（`prepare_site.py` がサイト用に `|` へ戻す）。2 スペース字下げの入れ子リストは mdx_truly_sane_lists で扱える
 - `get_property` や `_w` のように `_` を含む名前は、コードスパンの外に書くと斜体になってしまう。名前はコードスパンで囲む。コードスパンの外にある `_名前_` は `prepare_site.py` が警告する

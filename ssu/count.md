@@ -1,6 +1,6 @@
 # count
 
-**Category:** 数え上げ
+**Category:** 置換・削除・数え上げ
 
 ## 書式
 

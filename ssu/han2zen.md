@@ -1,6 +1,6 @@
 # han2zen
 
-**Category:** 変換
+**Category:** 変換・整形
 
 ## 書式
 

@@ -1,6 +1,6 @@
 # kata2hira
 
-**Category:** 変換
+**Category:** 変換・整形
 
 ## 書式
 
