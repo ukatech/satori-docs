@@ -25,7 +25,7 @@ from pymdownx.slugs import slugify
 
 ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 OUT = os.path.join(ROOT, '_site_src')
-SITE_URL = 'https://ukatech.github.io/satori-docs/'
+SITE_URL = 'https://ukatech.shillest.net/satori-docs/'
 # 改名したページ（旧パス: 新パス。docs_dir からの相対）。旧 URL に転送用の HTML を置く
 REDIRECTS = {
     'other/satori2-prerelease.md': 'other/satori2-launch.md',

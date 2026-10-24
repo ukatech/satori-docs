@@ -75,7 +75,7 @@
 
 ## GitHub Pages
 
-`main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が Zensical（Material for MkDocs の後継。Material テーマ互換）でビルドし、https://ukatech.github.io/satori-docs/ に公開する。ビルドは `zensical build --strict` で、リンク切れ・アンカー切れがあると失敗する。
+`main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が Zensical（Material for MkDocs の後継。Material テーマ互換）でビルドし、https://ukatech.shillest.net/satori-docs/ に公開する。ビルドは `zensical build --strict` で、リンク切れ・アンカー切れがあると失敗する。
 
 - 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる
 - 内蔵関数（`functions/`）と ssu（`ssu/`）は、サイトでは `index.md` の分類ごとの 1 ページ（`functions/variables/`、`ssu/extract/` など）にまとめて出す。`index.md` 自体は手書きのまま 1 ページで出す。文法（`grammar/01〜15`）も 1 ページ（`grammar/`）にまとめる。原稿は 1 ファイル 1 ページのまま書き、リンクも `../functions/set.md` や `05-kakko.md#引数区切り` と従来どおり書く（`prepare_site.py` がまとめたページの見出しへのリンクに書き換える。リンク先の見出しが無いとエラーで止まる）
