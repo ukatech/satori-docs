@@ -120,6 +120,11 @@ def read(rel):
         return f.read()
 
 
+def join_items(head, items):
+    # 項目の切れ目がわかるよう、つないだ項目の間に水平線を入れる（先頭の見出しと導入文の後ろには入れない）
+    return '\n\n'.join([head] + ['\n\n---\n\n'.join(items)] if items else [head])
+
+
 def write(rel, text):
     path = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -327,7 +332,7 @@ def build_groups(d, groups):
                 # ページ名は H2。その下の節（書式・引数など）は H4 にして、右の目次をページ名だけにする
                 depth_of = lambda level: 2 if level == 1 else level + 2
             parts.append(render(src, text, page, depth_of).strip('\n'))
-        write(page, '\n\n'.join(parts) + '\n')
+        write(page, join_items(parts[0], parts[1:]) + '\n')
         for name in lead + names:
             write_redirect(f'{d}/{name}.md', *MERGED[f'{d}/{name}.md'])
     write(f'{d}/.nav.yml', 'nav:\n  - index.md\n' + ''.join(f'  - {p}.md\n' for p in GROUP_PAGES[d].values()))
@@ -345,7 +350,7 @@ def build_grammar(chapters):
     for name in chapters:
         src = f'grammar/{name}'
         parts.append(render(src, read(src), 'grammar/index.md', lambda level: level + 1).strip('\n'))
-    write('grammar/index.md', '\n\n'.join(parts) + '\n')
+    write('grammar/index.md', join_items(parts[0], parts[1:]) + '\n')
     for name in chapters:
         write_redirect(f'grammar/{name}', *MERGED[f'grammar/{name}'])
 
