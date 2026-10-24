@@ -1,12 +1,19 @@
-/* ヘッダの色（落ち着いた赤）。ポストのロゴが赤に溶けないよう、白い丸背景にする */
+/* ヘッダの色は ukatech.shillest.net の里々の主色（緑）。ダークモードは明るい緑に暗い文字。
+   ポストのロゴが地に溶けないよう、白い丸背景にする */
 :root,
-[data-md-color-scheme="default"],
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #a4392f;
-  --md-primary-fg-color--light: #c25a4f;
-  --md-primary-fg-color--dark: #7d2a22;
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #2f6b3f;
+  --md-primary-fg-color--light: #4a8a5b;
+  --md-primary-fg-color--dark: #1f4d2c;
   --md-primary-bg-color: #fff;
   --md-primary-bg-color--light: rgba(255, 255, 255, .7);
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #6fb07f;
+  --md-primary-fg-color--light: #90c79d;
+  --md-primary-fg-color--dark: #52946a;
+  --md-primary-bg-color: #151619;
+  --md-primary-bg-color--light: rgba(21, 22, 25, .7);
 }
 .md-logo img {
   background-color: #fff;
@@ -56,8 +63,8 @@
 }
 .md-typeset .s2-cta a:first-child {
   border-color: transparent;
-  background: #a4392f;
-  color: #fff;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
 }
 .md-typeset .s2-cta a:hover {
   filter: brightness(1.1);
