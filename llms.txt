@@ -1,0 +1,26 @@
+# 里々マニュアル
+
+> 伺か（ukagaka）の SHIORI「里々（SATORI）」と、同梱の SAORI「ssu」の仕様書。里々のソースコード（Unicode 版）から読み取れる動作を、1 ページ 1 ファイルの Markdown で収めている。
+
+## 探し方
+
+- 最初に [INDEX.md](INDEX.md) を開く。「はじめての方へ」「調べたいとき」と、分野ごとのページ表から各ページへ辿れる。
+- `（）` の中で使える内蔵関数は [functions/index.md](functions/index.md)、ssu の関数は [ssu/index.md](ssu/index.md)、システム変数は [system/index.md](system/index.md) が一覧。それぞれ分類ごとの表から各ページへ辿れる。
+- 内蔵関数・ssu の関数は 1 関数 1 ファイルで、ファイル名は関数名（例: `functions/set.md`、`ssu/calc.md`）。
+- 書き方をざっと確認したいときは [startup/cheatsheet.md](startup/cheatsheet.md)。
+
+## 構成
+
+- [INDEX.md](INDEX.md): 全体の目次
+- `startup/`: 里々とは、はじめてのゴースト、チートシート
+- `grammar/`: 文法（`01`〜`15` の章立て）
+- `shiori/`: SHIORI としての動作（プロトコル、イベントの処理など）
+- `system/`: システム変数・組み込み名
+- `functions/`: `（）` 内蔵関数
+- `ssu/`: 同梱 SAORI「ssu」の関数
+- `other/`: Unicode 版（Mc202-1）公開、SAORI の呼び出し、ACP 版との違い、エラーメッセージ・警告
+
+## 書式
+
+- 関数ページは、書式 / 引数 / 戻り値 / 解説 / 使用例 / 関連項目の順。
+- 対応バージョンは `Mc201-1以降` のように書いてある（`McXYY-Z` の X=1 が ACP 版、X=2 が Unicode 版）。

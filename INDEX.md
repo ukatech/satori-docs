@@ -4,6 +4,8 @@
 
 間違いやわかりにくいところを見つけたら、[整備班BTS](https://bts.shillest.net/)（報告フォーム）で教えてください。GitHub に慣れている方は、[Issues](https://github.com/ukatech/satori-docs/issues) や Pull Request でも構いません。
 
+> AI エージェント向けに、探し方の案内 [llms.txt](https://ukatech.shillest.net/satori-docs/llms.txt) を用意しています。各ページの Markdown 原稿は、リポジトリと同じパスの `.md`（例: `https://ukatech.shillest.net/satori-docs/startup/cheatsheet.md`）で取得できます。
+
 ## ダウンロード・ソース
 
 - [里々のリポジトリ（satoriya-shiori）](https://github.com/ukatech/satoriya-shiori)

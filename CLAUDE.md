@@ -80,6 +80,8 @@
 - 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる
 - 内蔵関数（`functions/`）と ssu（`ssu/`）は、サイトでは `index.md` の分類ごとの 1 ページ（`functions/variables/`、`ssu/extract/` など）にまとめて出す。`index.md` 自体は手書きのまま 1 ページで出す。文法（`grammar/01〜15`）も 1 ページ（`grammar/`）にまとめる。原稿は 1 ファイル 1 ページのまま書き、リンクも `../functions/set.md` や `05-kakko.md#引数区切り` と従来どおり書く（`prepare_site.py` がまとめたページの見出しへのリンクに書き換える。リンク先の見出しが無いとエラーで止まる）
 - まとめた元ページの URL（`functions/set/` など）には、移動先へ飛ばすだけの HTML を `prepare_site.py` が置く。まとめたページでは、関数名（ssu の `regex.md` など解説のページは、その節）が H2、関数の中の節（書式・引数など）が H4 で、見出しの id は `set`（ファイル名）、`set-書式` の形になる。右の目次は `toc_depth: 3` により関数名だけになる
+- `llms.txt`（AI エージェント向けの探し方の案内。`INDEX.md` と各ディレクトリの入口だけを書く）はサイトのルートに置かれる。ページごとの一覧は載せないので、ページを足しても直さなくてよい。ディレクトリを足したときは「構成」に 1 行足す
+- 生の Markdown 原稿（`README.md` と `CLAUDE.md` 以外の `.md`）は、リポジトリと同じパスでサイトにも置かれる。`scripts/prepare_site.py` が `_raw/` に写し、workflow がビルド後に `_site` へ重ねる（zensical は `.md` をページにしてしまうので、`_site_src/` には置けない）。`llms.txt` や `INDEX.md` の相対リンクは、このおかげでサイト上でも辿れる
 - 設定は `mkdocs.yml` をそのまま読ませている。左メニューの章立ては `.nav.yml`（mkdocs-awesome-nav）、各ページの名前は H1 から決まる
 - GitHub では表示できても MkDocs（Python-Markdown）では崩れる書き方がある。段落の直後に空行なしで続くリストや表は `prepare_site.py` が空行を補うので、原稿は GitHub 向けのままでよい。表の中のコードスパンの `|` は GitHub 向けに `\|` と書く（`prepare_site.py` がサイト用に `|` へ戻す）。2 スペース字下げの入れ子リストは mdx_truly_sane_lists で扱える
 - `get_property` や `_w` のように `_` を含む名前は、コードスパンの外に書くと斜体になってしまう。名前はコードスパンで囲む。コードスパンの外にある `_名前_` は `prepare_site.py` が警告する
