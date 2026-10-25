@@ -246,4 +246,4 @@
 
 ## 動作確認
 
-`＄デバッグ＝有効` にして、`ShioriEcho` でその場で試せます（[ShioriEcho とデバッグ](../shiori/debug.md)）。エラーは[エラーメッセージ・警告](../other/error-messages.md)にあります。
+`＄デバッグ＝有効` にして、`ShioriEcho` でその場で試せます（[ShioriEcho とデバッグ](../shiori/debug.md)）。エラーは[エラーメッセージ・警告](../other/error-messages.md)にあります。辞書を動かさずに書き間違いを探すには、`ShioriLint` を使います（[辞書の静的検査](../shiori/lint.md)）。

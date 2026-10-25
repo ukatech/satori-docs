@@ -36,6 +36,8 @@
 
 `enable_log` `enable_debug` `ShioriEcho` `SatolistEcho` は、デバッグ用の特別な ID です（[ShioriEcho とデバッグ](debug.md)）。
 
+`ShioriLint` は、辞書を実行せずに検査する特別な ID です。`SecurityLevel: local` のときだけ動作し、結果を `X-Lint` ヘッダで返します（Mc206-1以降。[辞書の静的検査](lint.md)）。
+
 `NOTIFY` の `hwnd` `otherghostname` `capability`、および `＄NOTIFYの自動保存` が有効なときの `installed*` などは、内部で保存されます（[NOTIFY の保存](notify.md)）。
 
 ## 応答の値

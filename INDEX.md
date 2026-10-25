@@ -27,6 +27,7 @@
 - システム変数を調べたい → [システム変数](system/index.md)
 - `（）` の中で使える関数を調べたい → [（）内蔵関数](functions/index.md)、[ssu の関数](ssu/index.md)
 - エラーメッセージを調べたい → [エラーメッセージ・警告](other/error-messages.md)
+- 辞書の書き間違い（存在しない飛び先・閉じ忘れた `（` など）を、動かさずに探したい → [辞書の静的検査](shiori/lint.md)
 
 ページ上部の検索窓からも探せます。
 
@@ -76,6 +77,7 @@
 | [communicate.md](shiori/communicate.md) | コミュニケート |
 | [notify.md](shiori/notify.md) | NOTIFY の保存 |
 | [debug.md](shiori/debug.md) | ShioriEcho とデバッグ |
+| [lint.md](shiori/lint.md) | 辞書の静的検査（ShioriLint） |
 
 ---
 
