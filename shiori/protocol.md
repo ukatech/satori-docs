@@ -21,7 +21,7 @@
 | 200 OK | 応答の値を返す |
 | 204 No Content | 何も返さない（喋る内容がない、対応するトークがない、`＄今回は喋らない`、など） |
 | 400 Bad Request | 未対応のプロトコル |
-| 403 Forbidden | デバッグ機能を、ローカルでない呼び出しで使った |
+| 403 Forbidden | デバッグ機能や `ShioriLint` を、ローカルでない呼び出しで使った（Mc206-1以降。それ以前は 500 Internal Server Error と返っていました） |
 | 500 Internal Server Error | それ以外 |
 
 ## リクエストの ID による分岐
@@ -36,7 +36,7 @@
 
 `enable_log` `enable_debug` `ShioriEcho` `SatolistEcho` は、デバッグ用の特別な ID です（[ShioriEcho とデバッグ](debug.md)）。
 
-`ShioriLint` は、辞書を実行せずに検査する特別な ID です。`SecurityLevel: local` のときだけ動作し、結果を `X-Lint` ヘッダで返します（Mc206-1以降。[辞書の静的検査](lint.md)）。
+`ShioriLint` は、辞書を実行せずに検査する特別な ID です。`SecurityLevel: local` のときだけ動作し、結果を `ErrorLevel` / `ErrorDescription` ヘッダで返します（Mc206-1以降。[辞書の静的検査](lint.md)）。
 
 `NOTIFY` の `hwnd` `otherghostname` `capability`、および `＄NOTIFYの自動保存` が有効なときの `installed*` などは、内部で保存されます（[NOTIFY の保存](notify.md)）。
 
@@ -46,7 +46,7 @@
 
 - `To`・`Reference0`: 話しかけの相手（[コミュニケート](communicate.md)）
 - `BalloonOffset`: [＄BalloonOffset0/1](../system/vars-misc.md#balloonoffset0balloonoffset1)
-- `ErrorLevel` / `ErrorDescription`: エラー通知（ベースウェアが `capability` で `response.errorlevel` を通知したときだけ）
+- `ErrorLevel` / `ErrorDescription`: エラー通知（ベースウェアが `capability` で `response.errorlevel` を通知したときだけ。`ShioriLint` の結果は通知の有無に関係なく返ります）
 - `Reference?` `返信ヘッダ「…」`: [＄Value0](../system/vars-misc.md#value0value1) [＄返信ヘッダ](../system/vars-misc.md#返信ヘッダ名前)で設定したもの
 - `Charset`: リクエストの `Charset` に合わせる
 
