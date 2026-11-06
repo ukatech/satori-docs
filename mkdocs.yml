@@ -54,6 +54,7 @@ extra_css:
 
 extra_javascript:
   - assets/copy-tab.js
+  - assets/translate.js
 
 plugins:
   - search:
