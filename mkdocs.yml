@@ -19,7 +19,9 @@ theme:
   favicon: assets/logo.png
   language: ja
   features:
+    - navigation.tabs
     - navigation.sections
+    - toc.integrate
     - navigation.top
     - navigation.indexes
     - search.suggest

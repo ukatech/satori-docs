@@ -79,10 +79,10 @@
 
 - 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる
 - 内蔵関数（`functions/`）と ssu（`ssu/`）は、サイトでは `index.md` の分類ごとの 1 ページ（`functions/variables/`、`ssu/extract/` など）にまとめて出す。`index.md` 自体は手書きのまま 1 ページで出す。文法（`grammar/01〜15`）も 1 ページ（`grammar/`）にまとめる。原稿は 1 ファイル 1 ページのまま書き、リンクも `../functions/set.md` や `05-kakko.md#引数区切り` と従来どおり書く（`prepare_site.py` がまとめたページの見出しへのリンクに書き換える。リンク先の見出しが無いとエラーで止まる）
-- まとめた元ページの URL（`functions/set/` など）には、移動先へ飛ばすだけの HTML を `prepare_site.py` が置く。まとめたページでは、関数名（ssu の `regex.md` など解説のページは、その節）が H2、関数の中の節（書式・引数など）が H4 で、見出しの id は `set`（ファイル名）、`set-書式` の形になる。右の目次は `toc_depth: 3` により関数名だけになる
+- まとめた元ページの URL（`functions/set/` など）には、移動先へ飛ばすだけの HTML を `prepare_site.py` が置く。まとめたページでは、関数名（ssu の `regex.md` など解説のページは、その節）が H2、関数の中の節（書式・引数など）が H4 で、見出しの id は `set`（ファイル名）、`set-書式` の形になる。ページの目次（左の列に統合してある）は `toc_depth: 3` により関数名だけになる
 - `llms.txt`（AI エージェント向けの探し方の案内。`INDEX.md` と各ディレクトリの入口だけを書く）はサイトのルートに置かれる。ページごとの一覧は載せないので、ページを足しても直さなくてよい。ディレクトリを足したときは「構成」に 1 行足す
 - 生の Markdown 原稿（`README.md` と `CLAUDE.md` 以外の `.md`）は、リポジトリと同じパスでサイトにも置かれる。`scripts/prepare_site.py` が `_raw/` に写し、workflow がビルド後に `_site` へ重ねる（zensical は `.md` をページにしてしまうので、`_site_src/` には置けない）。`llms.txt` や `INDEX.md` の相対リンクは、このおかげでサイト上でも辿れる
-- 設定は `mkdocs.yml` をそのまま読ませている。左メニューの章立ては `.nav.yml`（mkdocs-awesome-nav）、各ページの名前は H1 から決まる
+- 設定は `mkdocs.yml` をそのまま読ませている。章立ては `.nav.yml`（mkdocs-awesome-nav）。最上位の章はヘッダのタブ（`navigation.tabs`）になり、左の列にはそのタブのページ一覧と開いているページの目次（`toc.integrate`）が並ぶ（画面の幅が約 1220px に満たないとハンバーガーのメニューにまとまる）。各ページの名前は H1 から決まる
 - GitHub では表示できても MkDocs（Python-Markdown）では崩れる書き方がある。段落の直後に空行なしで続くリストや表は `prepare_site.py` が空行を補うので、原稿は GitHub 向けのままでよい。表の中のコードスパンの `|` は GitHub 向けに `\|` と書く（`prepare_site.py` がサイト用に `|` へ戻す）。2 スペース字下げの入れ子リストは mdx_truly_sane_lists で扱える
 - `get_property` や `_w` のように `_` を含む名前は、コードスパンの外に書くと斜体になってしまう。名前はコードスパンで囲む。コードスパンの外にある `_名前_` は `prepare_site.py` が警告する
 - 注意書きは `!!! note "タイトル"` / `!!! warning "タイトル"`（admonition）で書く
@@ -90,7 +90,7 @@
 - Zensical のテンプレートは MiniJinja で、`page.file` や `page.is_homepage` が無い。`overrides/main.html` はページの URL（`page.url`）で判定し、ページ別の OGP は `extra.ogp` に URL をキーにして書く
 - 見た目は `theme.variant: classic` で従来のまま。Zensical の既定は新デザインの modern
 - ukadoc-spec の見た目の部品を、里々の主色に合わせて移してある（`assets/extra.css` の「束ねたページの見た目」と、`!!! note` の題のロゴ）。`scripts/prepare_site.py` が、目印の class を原稿の写しに付ける。分類ごとにまとめたページの関数名（H2。解説だけのページは除く）に `bundle-item`（項目名の帯）、トップページの節（H2）に `top-section`（帯）。`bundle-item` のあるページでは、書式・使用例などの見出し（H4）とその直後のコードブロックを 1 つの箱にする。色は `--ukd-*`（`assets/extra.css`）に集め、ヘッダの主色（`--md-primary-*`）から導く。`--ukd-*` は body に付く `[data-md-color-scheme]` に置く（`:root` に置くと、暗い表示の主色を読めない）。主色を変えたら、帯と箱の見え方も確かめる。
-- ヘッダに翻訳ボタンがある（`assets/translate.js`。`mkdocs.yml` の `extra_javascript`、見た目は `assets/extra.css` の `.ukadoc-translate`）。ブラウザ組み込みの Translator API（Chrome 138 以降のデスクトップ版など）で、本文と左メニューを日本語から英語・中国語（繁体 `zh-Hant`・簡体 `zh`）へ機械翻訳する。API が無いブラウザではボタンを出さない。訳すのは日本語を含むテキストノードだけで、`code` `pre` `kbd` と `translate="no"` の中は訳さない。訳したくない語は原稿で `<span translate="no">…</span>` と囲める。読める程度の品質でよいとしている。JavaScript を使うのはこのボタンだけ
+- ヘッダに翻訳ボタンがある（`assets/translate.js`。`mkdocs.yml` の `extra_javascript`、見た目は `assets/extra.css` の `.ukadoc-translate`）。ブラウザ組み込みの Translator API（Chrome 138 以降のデスクトップ版など）で、本文と左メニューを日本語から英語・中国語（繁体 `zh-Hant`・簡体 `zh`）へ機械翻訳する。API が無いブラウザではボタンを出さない。訳すのは日本語を含む文だけで、`code` `pre` `kbd` と `translate="no"` の中は訳さない。文はブロック（`p` `li` `td` など）の中の連なりを単位にまとめて訳し、リンク・太字・コードスパンは印（`<x1/>` `<a2>…</a2>`）に置き換えて訳してから元の要素へ戻す（印が崩れた文は断片ごとの訳に切り替える）。訳したくない語は原稿で `<span translate="no">…</span>` と囲める。読める程度の品質でよいとしている。JavaScript を使うのはこのボタンだけ
 
 手元で確認するとき（`_site_src/` と `_site/` は `.gitignore` 済み）:
 
