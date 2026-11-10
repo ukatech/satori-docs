@@ -1,6 +1,6 @@
 # oldstyle: 里々 Wiki の見た目を模した静的サイト
 
-里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン `skin/pukiwiki.css` に、丸ゴシックの字・見出しの字間・左のメニューの幅 18em などの手直しを加えたもの）の見た目と構造を、このリポジトリの Markdown 原稿から再現する自前のビルド。Zensical・MkDocs は使わない（以前の Zensical 版は `old-zensical` ブランチ）。見た目だけを真似て、HTML は HTML5。wiki の道具（ナビゲータの編集・差分・一覧などのリンク、ツールバー、最終更新、最新の 10 件、フッタ）は載せない。ヘッダのページの URL の代わりにパンくずリストを出し、右上に検索欄と翻訳ボタンを足している。
+里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン `skin/pukiwiki.css` に、丸ゴシックの字・見出しの字間・左のメニューの幅 18em などの手直しを加えたもの）の見た目と構造を（色は、色相を +150 度回して赤系にしたもの）、このリポジトリの Markdown 原稿から再現する自前のビルド。Zensical・MkDocs は使わない（以前の Zensical 版は `old-zensical` ブランチ）。見た目だけを真似て、HTML は HTML5。wiki の道具（ナビゲータの編集・差分・一覧などのリンク、ツールバー、最終更新、最新の 10 件、フッタ）は載せない。ヘッダのページの URL の代わりにパンくずリストを出し、右上に検索欄と翻訳ボタンを足している。
 
 ```sh
 python oldstyle/build.py              # scripts/prepare_site.py で _site_src/ を作り、_site/ に出力する
@@ -40,5 +40,5 @@ body[data-root]
 - 階層の元は menu.yml だけ。パンくずリストは、そのページが menu.yml で最初に出てくる項目から、親をたどって作る。ページが menu.yml のどこにも（`children:` にも `list:` にも）載っていないと、ビルドが止まる
 - `index:` を書いた項目の索引ページ（`startup/` `shiori/` `other/`）は、ビルドが `children:` と `list:` のページを並べた Markdown を `_site_src/` と `_raw/` に書いて作る（`_site_src/.generated` に記録し、`--no-prepare` のときの消し残しを防ぐ）。検索の索引には入れない。9 件以上の一覧は、`ul.index-grid` として 3 列のグリッドにする
 - 見出しの末尾の `†` は、その見出しへのリンク。ページ先頭の `div.contents` は、H2・H3 の目次
-- OGP は `build.py` の `OGP`、`other/satori2-launch.md` の部品は `style.css` の `.s2-*`（配色はほかのページと同じ wiki の配色）
+- OGP は `build.py` の `OGP`、`other/satori2-launch.md` の部品は `style.css` の `.s2-*`（配色はほかのページと同じ）
 - 翻訳ボタン（`translate.js`）は、`#search` の中に置かれる。訳す範囲は `#site-title`（ページ名・パンくずリスト）、`#body`、`#menubar`
