@@ -16,10 +16,11 @@
 ## ページを追加・改名したとき
 
 - `INDEX.md` の該当する表に追加する
+- `oldstyle/menu.yml` に加える。サイトの階層（左のメニュー・パンくずリスト・節の索引ページ）は、すべてこのファイルから作られる。載っていないページがあると、ビルドが止まる（関数・ssu の 1 関数 1 ファイルのページは、分類ごとにまとめたページが載っていればよい）
 - 内蔵関数なら `functions/index.md`、ssu の関数なら `ssu/index.md`、システム変数なら `system/index.md` にも追加する
-- 内蔵関数・ssu の関数は、`index.md` の「### 分類」の表に 1 回だけ載せ、ページの `**Category:**` 行を分類名と合わせる（末尾の `（Mc203-1以降）` のような注記は比べない）。サイトではこの分類ごとに 1 ページにまとめるため、載せ忘れや食い違いは `scripts/prepare_site.py` が止める。新しい分類を作ったら、`prepare_site.py` の `GROUP_PAGES` にページ名（英字。その分類のページ名と重ならないもの）も加える
-- 公開済みのページを改名したら、`scripts/prepare_site.py` の `REDIRECTS` に旧パスと新パスを加える（旧 URL に転送用の HTML を置く。Zensical は mkdocs-redirects を使えないため）
-- 新しいディレクトリを作ったら、`.nav.yml` の `nav` と `scripts/prepare_site.py` の `DIRS` に加える
+- 内蔵関数・ssu の関数は、`index.md` の「### 分類」の表に 1 回だけ載せ、ページの `**Category:**` 行を分類名と合わせる（末尾の `（Mc203-1以降）` のような注記は比べない）。サイトではこの分類ごとに 1 ページにまとめるため、載せ忘れや食い違いは `scripts/prepare_site.py` が止める。新しい分類を作ったら、`prepare_site.py` の `GROUP_PAGES` にページ名（英字。その分類のページ名と重ならないもの）も加え、`oldstyle/menu.yml` にそのページ（`functions/<ページ名>.md`）を載せる
+- 公開済みのページを改名したら、`scripts/prepare_site.py` の `REDIRECTS` に旧パスと新パスを加える（旧 URL に転送用の HTML を置く）
+- 新しいディレクトリを作ったら、`scripts/prepare_site.py` の `DIRS` に加え、`oldstyle/menu.yml` に載せる
 
 ## 言語仕様が変わったとき
 
@@ -75,28 +76,33 @@
 
 ## GitHub Pages
 
-`main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が Zensical（Material for MkDocs の後継。Material テーマ互換）でビルドし、https://ukatech.shillest.net/satori-docs/ に公開する。ビルドは `zensical build --strict` で、リンク切れ・アンカー切れがあると失敗する。
+`main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が `oldstyle/build.py` と `oldstyle/check.py` を走らせ、https://ukatech.shillest.net/satori-docs/ に公開する。ビルドは自前（Zensical・MkDocs は使わない。以前の Zensical 版は `old-zensical` ブランチに残してある）で、リンク切れ・アンカー切れがあると失敗する。ビルドの仕組みは [`oldstyle/README.md`](oldstyle/README.md)。原稿を書くうえで知っておくことは次のとおり。
 
-- 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる
+- サイトの見た目と構造は、里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン）を模している。上にヘッダ（左に 80x80 のアイコン、ページ名、その下にパンくずリスト。右上に検索欄と翻訳ボタン）、左に目次（`#menubar`）、右に本文（`#body`）。wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い。HTML は HTML5 で、JavaScript は検索（`search.js`）・翻訳ボタン（`translate.js`）・【タブ】のコピー（`copy-tab.js`）だけ
+- ページの H1 は、本文ではなくヘッダのページ名（wiki の `h1.title`）になる。本文の見出しは H2 が帯、H3 が枠、H4 が左の太線（wiki と同じ）
+- ページの URL は、Zensical 版と同じディレクトリ形式（`other/saori/` など）。外部からのリンクを切らないため、変えない。`file://` ではディレクトリのリンクが `index.html` を開かないので、手元では `python -m http.server -d _site` で見る
+- 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる。原稿内のリンク（`../functions/set.md` や `05-kakko.md#引数区切り` など）は、ビルドが出力先の相対パスに書き換える。行き先が無ければビルドが止まる
 - 内蔵関数（`functions/`）と ssu（`ssu/`）は、サイトでは `index.md` の分類ごとの 1 ページ（`functions/variables/`、`ssu/extract/` など）にまとめて出す。`index.md` 自体は手書きのまま 1 ページで出す。文法（`grammar/01〜15`）も 1 ページ（`grammar/`）にまとめる。原稿は 1 ファイル 1 ページのまま書き、リンクも `../functions/set.md` や `05-kakko.md#引数区切り` と従来どおり書く（`prepare_site.py` がまとめたページの見出しへのリンクに書き換える。リンク先の見出しが無いとエラーで止まる）
-- まとめた元ページの URL（`functions/set/` など）には、移動先へ飛ばすだけの HTML を `prepare_site.py` が置く。まとめたページでは、関数名（ssu の `regex.md` など解説のページは、その節）が H2、関数の中の節（書式・引数など）が H4 で、見出しの id は `set`（ファイル名）、`set-書式` の形になる。ページの目次（左の列に統合してある）は `toc_depth: 3` により関数名だけになる
+- まとめた元ページの URL（`functions/set/` など）には、移動先へ飛ばすだけの HTML を `prepare_site.py` が置く。まとめたページでは、関数名（ssu の `regex.md` など解説のページは、その節）が H2、関数の中の節（書式・引数など）が H4 で、見出しの id は `set`（ファイル名）、`set-書式` の形になる
+- 各ページの先頭（最初の H2 の前）に、wiki の `#contents` にあたる目次を `oldstyle/build.py` が付ける（H2・H3 が 3 つ以上あるページ。トップページは H2 だけ）。まとめたページの目次は関数名だけになる。見出しの末尾の `†` は、その見出しへのリンク（wiki と同じ）
+- サイトの階層の元は `oldstyle/menu.yml`（wiki の MenuBar に当たる、手で選んだ一覧。書き方はファイルの先頭に書いてある）ひとつだけ。左のメニュー、上のパンくずリスト、節の索引ページ（`startup/` `shiori/` `other/`）が、同じ木から作られる。最上位の項目は左のメニューで見出しになる。`index: startup/` と書いた項目には、下の項目を並べるだけの索引ページを、ビルドが自動で作る（原稿は無い。サイトには生の `index.md` も置かれる）。原稿のパスや `#見出し` が違う、載っていないページがある、とビルドが止まる
 - `llms.txt`（AI エージェント向けの探し方の案内。`INDEX.md` と各ディレクトリの入口だけを書く）はサイトのルートに置かれる。ページごとの一覧は載せないので、ページを足しても直さなくてよい。ディレクトリを足したときは「構成」に 1 行足す
-- 生の Markdown 原稿（`README.md` と `CLAUDE.md` 以外の `.md`）は、リポジトリと同じパスでサイトにも置かれる。`scripts/prepare_site.py` が `_raw/` に写し、workflow がビルド後に `_site` へ重ねる（zensical は `.md` をページにしてしまうので、`_site_src/` には置けない）。`llms.txt` や `INDEX.md` の相対リンクは、このおかげでサイト上でも辿れる
-- 設定は `mkdocs.yml` をそのまま読ませている。章立ては `.nav.yml`（mkdocs-awesome-nav）。最上位の章はヘッダのタブ（`navigation.tabs`）になり、左の列にはそのタブのページ一覧と開いているページの目次（`toc.integrate`）が並ぶ（画面の幅が約 1220px に満たないとハンバーガーのメニューにまとまる）。各ページの名前は H1 から決まる
-- GitHub では表示できても MkDocs（Python-Markdown）では崩れる書き方がある。段落の直後に空行なしで続くリストや表は `prepare_site.py` が空行を補うので、原稿は GitHub 向けのままでよい。表の中のコードスパンの `|` は GitHub 向けに `\|` と書く（`prepare_site.py` がサイト用に `|` へ戻す）。2 スペース字下げの入れ子リストは mdx_truly_sane_lists で扱える
+- 生の Markdown 原稿（`README.md` と `CLAUDE.md` 以外の `.md`）は、リポジトリと同じパスでサイトにも置かれる（`prepare_site.py` が `_raw/` に写し、ビルドが出力に重ねる）。`llms.txt` や `INDEX.md` の相対リンクは、このおかげでサイト上でも辿れる
+- Markdown の拡張は `tables` `admonition` `attr_list` `md_in_html` `mdx_truly_sane_lists` `pymdownx.superfences` `toc`。見出しのアンカーは GitHub と同じく日本語のまま（`pymdownx.slugs.slugify(case='lower')`）で、`prepare_site.py` のリンク書き換えと同じ変換
+- GitHub では表示できても Python-Markdown では崩れる書き方がある。段落の直後に空行なしで続くリストや表は `prepare_site.py` が空行を補うので、原稿は GitHub 向けのままでよい。表の中のコードスパンの `|` は GitHub 向けに `\|` と書く（`prepare_site.py` がサイト用に `|` へ戻す）。2 スペース字下げの入れ子リストは mdx_truly_sane_lists で扱える
 - `get_property` や `_w` のように `_` を含む名前は、コードスパンの外に書くと斜体になってしまう。名前はコードスパンで囲む。コードスパンの外にある `_名前_` は `prepare_site.py` が警告する
 - 注意書きは `!!! note "タイトル"` / `!!! warning "タイトル"`（admonition）で書く
-- Zensical は 0.0.x の版を固定している（`requirements.txt`）。Material for MkDocs は 2026-11-05 にサポート終了のため移行した（MkDocs 2.0 はプラグインや Material テーマと互換性が無い）
-- Zensical のテンプレートは MiniJinja で、`page.file` や `page.is_homepage` が無い。`overrides/main.html` はページの URL（`page.url`）で判定し、ページ別の OGP は `extra.ogp` に URL をキーにして書く
-- 見た目は `theme.variant: classic` で従来のまま。Zensical の既定は新デザインの modern
-- ukadoc-spec の見た目の部品を、里々の主色に合わせて移してある（`assets/extra.css` の「束ねたページの見た目」と、`!!! note` の題のロゴ）。`scripts/prepare_site.py` が、目印の class を原稿の写しに付ける。分類ごとにまとめたページの関数名（H2。解説だけのページは除く）に `bundle-item`（項目名の帯）、トップページの節（H2）に `top-section`（帯）。`bundle-item` のあるページでは、書式・使用例などの見出し（H4）とその直後のコードブロックを 1 つの箱にする。色は `--ukd-*`（`assets/extra.css`）に集め、ヘッダの主色（`--md-primary-*`）から導く。`--ukd-*` は body に付く `[data-md-color-scheme]` に置く（`:root` に置くと、暗い表示の主色を読めない）。主色を変えたら、帯と箱の見え方も確かめる。
-- ヘッダに翻訳ボタンがある（`assets/translate.js`。`mkdocs.yml` の `extra_javascript`、見た目は `assets/extra.css` の `.ukadoc-translate`）。ブラウザ組み込みの Translator API（Chrome 138 以降のデスクトップ版など）で、本文と左メニューを日本語から英語・中国語（繁体 `zh-Hant`・簡体 `zh`）へ機械翻訳する。API が無いブラウザではボタンを出さない。訳すのは日本語を含む文だけで、`code` `pre` `kbd` と `translate="no"` の中は訳さない。文はブロック（`p` `li` `td` など）の中の連なりを単位にまとめて訳し、リンク・太字・コードスパンは印（`<x1/>` `<a2>…</a2>`）に置き換えて訳してから元の要素へ戻す（印が崩れた文は断片ごとの訳に切り替える）。訳したくない語は原稿で `<span translate="no">…</span>` と囲める。読める程度の品質でよいとしている。JavaScript を使うのはこのボタンだけ
+- 見た目は `oldstyle/static/style.css`（wiki の `skin/pukiwiki.css` の規則のうち使う分。色と寸法は wiki のまま）。ダークモードは無い。ヘッダのアイコンは `oldstyle/static/skin/logo.png`（80x80）。`other/satori2-launch.md` の部品（`.s2-*`）も `style.css` にある
+- OGP / Twitter カードのタグは `oldstyle/build.py` が全ページに出す。ページごとのタイトル・説明・画像（1200x630 の PNG）は `build.py` の `OGP` に、ページの URL（`other/satori2-launch/` のように末尾が `/`。トップは空文字）をキーにして書く
+- 検索は、ビルド時に作る `search-index.js`（節ごとの本文）を、`search.js` が空白区切りの語の AND で部分一致検索する。ヘッダの検索欄に打ち込むとドロップダウンが出て、Enter で `search/?q=` に全件が並ぶ
+- ヘッダに翻訳ボタンがある（`oldstyle/static/translate.js`。見た目は `style.css` の `.ukadoc-translate`）。ブラウザ組み込みの Translator API（Chrome 138 以降のデスクトップ版など）で、本文・左のメニュー・ページ名とパンくずリストを日本語から英語・中国語（繁体 `zh-Hant`・簡体 `zh`）へ機械翻訳する。API が無いブラウザではボタンを出さない。訳すのは日本語を含む文だけで、`code` `pre` `kbd` と `translate="no"` の中は訳さない。文はブロック（`p` `li` `td` など）の中の連なりを単位にまとめて訳し、リンク・太字・コードスパンは印（`<x1/>` `<a2>…</a2>`）に置き換えて訳してから元の要素へ戻す（印が崩れた文は断片ごとの訳に切り替える）。訳したくない語は原稿で `<span translate="no">…</span>` と囲める。読める程度の品質でよいとしている
+- `sitemap.xml` と `404.html` もビルドが作る。404.html のリンクは、どの深さで開かれるかわからないので、サイトのルートからの絶対パス（`/satori-docs/…`）
 
-手元で確認するとき（`_site_src/` と `_site/` は `.gitignore` 済み）:
+手元で確認するとき（`_site_src/` `_site/` `_raw/` は `.gitignore` 済み）:
 
 ```sh
 pip install -r requirements.txt
-python scripts/prepare_site.py
-zensical build --strict    # 警告（リンク切れ・アンカー切れ）が出ないことを確認する
-zensical serve             # http://127.0.0.1:8000/satori-docs/ でプレビュー
+python oldstyle/build.py    # prepare_site.py で _site_src/ を作り、_site/ に出力する（--no-prepare で作り直さない）
+python oldstyle/check.py    # 出力のリンク切れ・アンカー切れ・画像の切れ・検索の索引の URL を調べる（エラーが 0 件であること）
+python -m http.server -d _site    # http://127.0.0.1:8000/ でプレビュー
 ```

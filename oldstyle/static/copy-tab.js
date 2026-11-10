@@ -1,5 +1,4 @@
-// コードブロックのコピーボタンで、【タブ】をタブ文字（\t）に置き換えてコピーする。
-// Material のコピーボタンは clipboard.js 経由で execCommand("copy") を使うため、
+// コードブロックなどを選んでコピーしたとき、【タブ】をタブ文字（\t）に置き換えてコピーする。
 // copy イベントでクリップボードの中身を差し替える。
 document.addEventListener("copy", function (e) {
   // clipboard.js は一時的な textarea を選択してコピーする（Firefox は getSelection() が空になる）

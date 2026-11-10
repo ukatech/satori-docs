@@ -1,0 +1,181 @@
+# 左のメニューの定義（旧 wiki の MenuBar に当たる）。サイトの階層構造の元になるファイルで、
+# 左のメニュー・上のパンくずリスト・各節の索引ページが、すべてここから作られる。
+#
+# 項目の書き方（menu: の下に並べる。children: で下の項目を入れ子にできる。深さは自由）
+#   - title: 表示する名前        必須
+#     page: 原稿のパス           サイト内のページ。リポジトリ内のパス（`startup/cheatsheet.md`）で書く
+#                                `INDEX.md#見出し` のように # でアンカーも付けられる
+#                                `grammar/05-kakko.md` や `functions/set.md` のように、まとめた元の原稿も書ける
+#                                （まとめたページの、その項目の見出しへのリンクになる）。
+#                                分類ごとにまとめたページ（`functions/variables.md` など。scripts/prepare_site.py の
+#                                GROUP_PAGES のファイル名）も書ける
+#     index: startup/            下の項目の索引ページを自動で作る。その URL（小文字の英数字とハイフン、末尾は /）。
+#                                children: と list: に書いたページを並べるだけの、小さなページになる
+#     url: https://...           外部のページ
+#     children: [...]            下の項目。左のメニューに出て、索引ページにも並ぶ
+#     list: other                そのディレクトリの原稿のうち、menu.yml のどこにも載っていないページを、この項目の下に置く。
+#                                左のメニューには出さず、索引ページとパンくずリストにだけ使う（数が多いページ向け）。
+#                                並びは、ディレクトリに .nav.yml があればその順、残りは各ページの題（H1）の順
+#   page: index: url: は、1 項目に 1 つだけ書ける。どれも書かない項目は、リンクの無い見出しになる（下にページを置けない）。
+#
+# 最上位の項目は、左のメニューでは見出し（下の項目が無いものは 1 行のリンク）になる。
+# 原稿は、children: か list: のどこかに必ず載せる（載っていないページがあると、ビルドが止まる）。
+# 同じページを何か所に書いてもよいが、パンくずリストは最初に出てくる項目の下になる。
+# 原稿のパスやアンカーが違っても、ビルド（oldstyle/build.py）が止まる。表示は、書いた順のまま。
+menu:
+  - title: トップページ
+    page: INDEX.md
+
+  - title: 里々の配布元
+    children:
+      - title: 里々のリポジトリ
+        url: https://github.com/ukatech/satoriya-shiori
+      - title: ダウンロード
+        url: https://github.com/ukatech/satoriya-shiori/releases
+      - title: ポストと狛犬 V2
+        url: https://github.com/ukatech/POST_and_KOMAINU_V2
+
+  - title: はじめに
+    index: startup/
+    children:
+      - title: 里々とは
+        page: startup/what-is-satori.md
+      - title: はじめてのゴースト
+        page: startup/getting-started.md
+      - title: チートシート
+        page: startup/cheatsheet.md
+
+  - title: 文法
+    page: grammar/index.md
+    children:
+      - title: 辞書ファイルと読み込み
+        page: grammar/01-dictionary-files.md
+      - title: 文と単語群
+        page: grammar/02-talks-and-words.md
+      - title: 前処理
+        page: grammar/03-preprocess.md
+      - title: 文の行の書き方
+        page: grammar/04-script-lines.md
+      - title: （）の展開
+        page: grammar/05-kakko.md
+      - title: 変数
+        page: grammar/06-variables.md
+      - title: 式
+        page: grammar/07-expressions.md
+      - title: 制御構造
+        page: grammar/08-flow-control.md
+      - title: 選択肢
+        page: grammar/09-choices.md
+      - title: スコープとサーフェス
+        page: grammar/10-speaker-and-surface.md
+      - title: 自動挿入
+        page: grammar/11-auto-insert.md
+      - title: 重複回避
+        page: grammar/12-overlap-avoidance.md
+      - title: さくらスクリプトの扱い
+        page: grammar/13-sakura-script.md
+      - title: 文字コード
+        page: grammar/14-charset.md
+      - title: セーブデータ
+        page: grammar/15-save-data.md
+
+  - title: SHIORI としての動作
+    index: shiori/
+    children:
+      - title: プロトコルとリクエスト処理
+        page: shiori/protocol.md
+      - title: イベントの処理
+        page: shiori/events.md
+      - title: デフォルトの動作
+        page: shiori/default-behaviors.md
+      - title: 里々独自のイベントと文
+        page: shiori/satori-events.md
+      - title: ランダムトークとタイマ
+        page: shiori/random-talk.md
+      - title: コミュニケート
+        page: shiori/communicate.md
+      - title: NOTIFY の保存
+        page: shiori/notify.md
+      - title: ShioriEcho とデバッグ
+        page: shiori/debug.md
+      - title: 辞書の静的検査
+        page: shiori/lint.md
+
+  - title: システム変数・組み込み名
+    page: system/index.md
+    children:
+      - title: 喋りとトーク予約
+        page: system/vars-talk.md
+      - title: スクリプトへの付加
+        page: system/vars-script.md
+      - title: サーフェス
+        page: system/vars-surface.md
+      - title: 自動挿入
+        page: system/vars-auto.md
+      - title: 制限値
+        page: system/vars-limits.md
+      - title: マウス反応
+        page: system/vars-mouse.md
+      - title: セーブ・辞書・タイマ・重複回避
+        page: system/vars-save.md
+      - title: ログ・デバッグ
+        page: system/vars-debug.md
+      - title: その他
+        page: system/vars-misc.md
+      - title: 引数・参照値の名前
+        page: system/names-refs.md
+      - title: 時刻・経過時間・乱数
+        page: system/names-time.md
+      - title: 状態・存在確認
+        page: system/names-state.md
+
+  - title: （）内蔵関数
+    page: functions/index.md
+    children:
+      - title: 変数・呼び出し
+        page: functions/variables.md
+      - title: 特殊形式（条件・繰り返し）
+        page: functions/special-forms.md
+      - title: 単語・文字
+        page: functions/words.md
+      - title: 本体との連携
+        page: functions/host.md
+
+  - title: ssu（同梱 SAORI）
+    page: ssu/index.md
+    children:
+      - title: 計算
+        page: ssu/arithmetic.md
+      - title: 条件分岐
+        page: ssu/branch.md
+      - title: 文字列の切り出し・分割・結合
+        page: ssu/extract.md
+      - title: 置換・削除・数え上げ
+        page: ssu/edit.md
+      - title: 正規表現
+        page: ssu/regexp.md
+      - title: 比較・判定
+        page: ssu/check.md
+      - title: 変換・整形
+        page: ssu/convert.md
+      - title: その他
+        page: ssu/misc.md
+
+  - title: その他
+    index: other/
+    children:
+      - title: 里々 Unicode 版（Mc202-1）公開
+        page: other/satori2-launch.md
+      - title: SAORI の呼び出し
+        page: other/saori.md
+      - title: ACP 版との違い
+        page: other/unicode-changes.md
+      - title: エラーメッセージ・警告
+        page: other/error-messages.md
+
+  - title: 連絡
+    children:
+      - title: 整備班BTS
+        url: https://bts.shillest.net/
+      - title: GitHub Issues
+        url: https://github.com/ukatech/satori-docs/issues
