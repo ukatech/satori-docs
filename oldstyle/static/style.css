@@ -12,7 +12,8 @@ html {
 body {
 	color: black;
 	background-color: white;
-	margin: 0 2%;
+	/* 上下はブラウザの既定（wiki と同じ 8px）。アイコンが画面の上端に付かないように */
+	margin: 8px 2%;
 	font-size: 100%;
 	font-family: "ヒラギノ丸ゴ Pro W3", "Hiragino Maru Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Osaka", "verdana", "arial", "helvetica", sans-serif;
 }
