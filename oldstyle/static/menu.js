@@ -3,7 +3,8 @@
    - この script は head で同期に読み込み、<html> に js-drawer を付ける。CSS は js-drawer があるときだけメニューを畳む
      （JavaScript が動かなければ、メニューは従来どおり本文の下に出る）
    - 開いているときは <html> に drawer-open。引き出しは、ヘッダの下から出る（--drawer-top。ヘッダが画面の外なら画面の上から）
-   - 背景の暗幕・Esc・メニューの中のリンクで閉じる。広い画面に戻ると閉じる */
+   - 背景の暗幕・Esc・メニューの中のリンクで閉じる。広い画面に戻ると閉じる
+   また、上端に残るヘッダの高さを測って、CSS の --header-h に入れる */
 (function () {
   'use strict';
 
@@ -20,6 +21,15 @@
     var bar = document.getElementById('search');
     var header = document.getElementById('header');
     if (!drawer || !bar || !header) return;
+
+    // 広い画面では、ヘッダが上端に残る。その高さ（パンくずリストの折り返しで変わる）を --header-h に入れ、
+    // 左のメニューの貼り付く位置と、#アンカーで飛んだ見出しの位置を、ヘッダの下に合わせる
+    function measure() {
+      root.style.setProperty('--header-h', Math.ceil(header.getBoundingClientRect().height) + 'px');
+    }
+    measure();
+    if (window.ResizeObserver) new ResizeObserver(measure).observe(header);
+    else window.addEventListener('resize', measure);
 
     var button = document.createElement('button');
     button.type = 'button';

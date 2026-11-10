@@ -77,7 +77,7 @@
 
 `main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が `oldstyle/build.py` と `oldstyle/check.py` を走らせ、https://ukatech.shillest.net/satori-docs/ に公開する。ビルドは自前（Zensical・MkDocs は使わない。以前の Zensical 版は `old-zensical` ブランチに残してある）で、リンク切れ・アンカー切れがあると失敗する。ビルドの仕組みは [`oldstyle/README.md`](oldstyle/README.md)。原稿を書くうえで知っておくことは次のとおり。
 
-- サイトの見た目と構造は、里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン）を模している。上にヘッダ（左に 80x80 のアイコン、ページ名、その下にパンくずリスト。右上に検索欄と翻訳ボタン）、左に目次（`#menubar`）、右に本文（`#body`）。wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い。HTML は HTML5 で、左のメニューはスクロールしても画面の上端に残り、幅が 767px 以下ではハンバーガーボタンで開く引き出しに畳む。JavaScript は検索（`search.js`）・翻訳ボタン（`translate.js`）・【タブ】のコピー（`copy-tab.js`）・狭い画面のメニュー（`menu.js`）だけ
+- サイトの見た目と構造は、里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン）を模している。上にヘッダ（左に 50x50 に縮めたアイコン、ページ名、その下にパンくずリスト。右上に検索欄と翻訳ボタン）、左に目次（`#menubar`）、右に本文（`#body`）。wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い。HTML は HTML5 で、ヘッダ（区切りの横線まで）はスクロールしても画面の上端に残り、左のメニューはその下に残る（yaya-docs と同じ）。幅が 767px 以下ではヘッダは残さず、左のメニューはハンバーガーボタンで開く引き出しに畳む。JavaScript は検索（`search.js`）・翻訳ボタン（`translate.js`）・【タブ】のコピー（`copy-tab.js`）・狭い画面のメニュー（`menu.js`）だけ
 - ページの H1 は、本文ではなくヘッダのページ名（wiki の `h1.title`）になる。本文の見出しは H2 が帯、H3 が枠、H4 が左の太線（wiki と同じ）
 - ページの URL は、Zensical 版と同じディレクトリ形式（`other/saori/` など）。外部からのリンクを切らないため、変えない。`file://` ではディレクトリのリンクが `index.html` を開かないので、手元では `python -m http.server -d _site` で見る
 - 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる。原稿内のリンク（`../functions/set.md` や `05-kakko.md#引数区切り` など）は、ビルドが出力先の相対パスに書き換える。行き先が無ければビルドが止まる
@@ -91,7 +91,7 @@
 - GitHub では表示できても Python-Markdown では崩れる書き方がある。段落の直後に空行なしで続くリストや表は `prepare_site.py` が空行を補うので、原稿は GitHub 向けのままでよい。表の中のコードスパンの `|` は GitHub 向けに `\|` と書く（`prepare_site.py` がサイト用に `|` へ戻す）。2 スペース字下げの入れ子リストは mdx_truly_sane_lists で扱える
 - `get_property` や `_w` のように `_` を含む名前は、コードスパンの外に書くと斜体になってしまう。名前はコードスパンで囲む。コードスパンの外にある `_名前_` は `prepare_site.py` が警告する
 - 注意書きは `!!! note "タイトル"` / `!!! warning "タイトル"`（admonition）で書く
-- 見た目は `oldstyle/static/style.css`（wiki の `skin/pukiwiki.css` の規則のうち使う分。寸法は wiki のまま。色はヘッダのアイコンに合わせて、wiki の青系の配色を赤系にしてある。青色付近の色は色相を +150 度回す。note の青系の枠や検索語の強調の黄色のように、色に意味があるものは wiki の色のまま。その他の色は、赤系に合う色を選び直す（訪問済みのリンクは赤紫、warning の枠は黄色系。決め方は `style.css` の先頭に書いてある））。ダークモードは無い。ヘッダのアイコンは `oldstyle/static/skin/logo.png`（80x80）。`other/satori2-launch.md` の部品（`.s2-*`）も `style.css` にある
+- 見た目は `oldstyle/static/style.css`（wiki の `skin/pukiwiki.css` の規則のうち使う分。寸法は wiki のまま。色はヘッダのアイコンに合わせて、wiki の青系の配色を赤系にしてある。青色付近の色は色相を +150 度回す。note の青系の枠や検索語の強調の黄色のように、色に意味があるものは wiki の色のまま。その他の色は、赤系に合う色を選び直す（訪問済みのリンクは赤紫、warning の枠は黄色系。決め方は `style.css` の先頭に書いてある））。ダークモードは無い。ヘッダのアイコンは `oldstyle/static/skin/logo.png`（80x80 の画像を 50x50 で表示）。`other/satori2-launch.md` の部品（`.s2-*`）も `style.css` にある
 - OGP / Twitter カードのタグは `oldstyle/build.py` が全ページに出す。ページごとのタイトル・説明・画像（1200x630 の PNG）は `build.py` の `OGP` に、ページの URL（`other/satori2-launch/` のように末尾が `/`。トップは空文字）をキーにして書く
 - 検索は、ビルド時に作る `search-index.js`（節ごとの本文）を、`search.js` が空白区切りの語の AND で部分一致検索する。ヘッダの検索欄に打ち込むとドロップダウンが出て、Enter で `search/?q=` に全件が並ぶ
 - ヘッダに翻訳ボタンがある（`oldstyle/static/translate.js`。見た目は `style.css` の `.ukadoc-translate`）。ブラウザ組み込みの Translator API（Chrome 138 以降のデスクトップ版など）で、本文・左のメニュー・ページ名とパンくずリストを日本語から英語・中国語（繁体 `zh-Hant`・簡体 `zh`）へ機械翻訳する。API が無いブラウザではボタンを出さない。訳すのは日本語を含む文だけで、`code` `pre` `kbd` と `translate="no"` の中は訳さない。文はブロック（`p` `li` `td` など）の中の連なりを単位にまとめて訳し、リンク・太字・コードスパンは印（`<x1/>` `<a2>…</a2>`）に置き換えて訳してから元の要素へ戻す（印が崩れた文は断片ごとの訳に切り替える）。訳したくない語は原稿で `<span translate="no">…</span>` と囲める。読める程度の品質でよいとしている

@@ -226,11 +226,22 @@ thead th {
 	padding: 0 0 .5em 0;
 }
 
-/* ---- ヘッダ（wiki の div#header: 左に 80x80 のロゴ、ページ名の h1.title。URL の代わりにパンくずリスト）。
-   検索欄と翻訳ボタンは右上（wiki の div#banner の位置） ---- */
+/* ---- ヘッダ（wiki の div#header: 左にロゴ、ページ名の h1.title。URL の代わりにパンくずリスト）。
+   検索欄と翻訳ボタンは右上（wiki の div#banner の位置）。
+   wiki のロゴは 80x80 だが、スクロールしても画面の上端に残す（yaya-docs と同じ。狭い画面を除く）ので、50x50 に縮める。
+   区切りの hr.full_hr もヘッダの中に置いて、一緒に残す。
+   ヘッダの高さ（--header-h）は、パンくずリストの折り返しで変わるので menu.js が測る。下の値は測る前の目安 ---- */
+html {
+	--header-h: 62px;
+	scroll-padding-top: calc(var(--header-h) + 4px);   /* #アンカーの見出しが、ヘッダに隠れないように */
+}
 #header {
-	padding: 0;
-	margin: 0;
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	padding: 4px 0 0 0;
+	margin: -4px 0 0 0;                  /* 上の padding の分。ページの上端からの位置は従来どおり */
+	background-color: white;
 	word-break: break-all;
 	display: flow-root;
 }
@@ -239,17 +250,22 @@ thead th {
 }
 img#logo {
 	float: left;
-	margin-right: 20px;
+	margin-right: 14px;
 }
 /* wiki ではページ名がリンクだったので、リンクの色 */
 h1.title {
 	color: #9c2c1c;
-	font-size: 30px;
+	font-size: 22px;
 	font-weight: bold;
+	line-height: 1.25;
 	background-color: transparent;
-	padding: 12px 0 0 0;
+	padding: 0;
 	border: 0;
-	margin: 12px 0 0 0;
+	margin: 4px 0 0 0;
+}
+#header hr.full_hr {
+	clear: both;
+	margin: 4px 0 0 0;
 }
 /* パンくずリスト（wiki ではページの URL を小さい字で出していた位置） */
 #breadcrumb ul {
@@ -274,7 +290,7 @@ h1.title {
 	align-items: center;
 	gap: .3em;
 	width: 18em;
-	margin: 24px 0 0 1em;
+	margin: 12px 0 0 1em;
 }
 #search form {
 	flex: 1 1 auto;
@@ -306,6 +322,7 @@ h1.title {
 
 /* ---- 本文（div#body）と左のメニュー（div#menubar）。HTML では本文が先で、order で左右を入れ替える ---- */
 #contents {
+	margin-top: 4px;
 	display: flex;
 	flex-flow: row nowrap;
 	/* 左のメニューを sticky にするため、伸ばさない（伸ばすと本文と同じ高さになって、貼り付かない） */
@@ -313,7 +330,7 @@ h1.title {
 	word-break: break-all;
 	overflow-wrap: break-word;
 }
-/* 左のメニューは、スクロールしても画面の上端に貼り付いて残る（yaya-docs と同じ）。
+/* 左のメニューは、スクロールしてもヘッダの下に貼り付いて残る（yaya-docs と同じ）。
    画面より長いときは、メニューの中だけをスクロールする */
 #menubar {
 	min-width: 18em;
@@ -322,8 +339,8 @@ h1.title {
 	margin: 4px;
 	font-size: 90%;
 	position: sticky;
-	top: 4px;                        /* margin と同じだけ上端から離す */
-	max-height: calc(100vh - 8px);
+	top: calc(var(--header-h) + 4px);   /* ヘッダの下から、margin と同じだけ離す */
+	max-height: calc(100vh - var(--header-h) - 8px);
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -588,6 +605,13 @@ ul.index-grid li {
 
 /* ---- 幅が狭いとき（wiki と同じ 767px 以下）: 本文 → メニューの縦並びにする ---- */
 @media (max-width: 767px) {
+	/* 縦に狭いので、ヘッダは貼り付けない（yaya-docs と同じ） */
+	html {
+		scroll-padding-top: 0;
+	}
+	#header {
+		position: static;
+	}
 	/* 本文 → メニューの順に縦に積む（HTML の順のまま。flex のままだと、広い表が本文の幅を押し広げる） */
 	#contents {
 		display: block;
@@ -628,7 +652,7 @@ ul.index-grid li {
 		margin: 0 0 .5em 0;
 	}
 	h1.title {
-		font-size: 24px;
+		font-size: 20px;
 	}
 }
 
@@ -700,6 +724,9 @@ ul.index-grid li {
 }
 
 @media print {
+	#header {
+		position: static;
+	}
 	a:link,
 	a:visited {
 		text-decoration: underline;
