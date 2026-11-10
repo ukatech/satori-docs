@@ -340,7 +340,11 @@ h1.title {
 	font-size: 90%;
 	position: sticky;
 	top: calc(var(--header-h) + 4px);   /* ヘッダの下から、margin と同じだけ離す */
-	max-height: calc(100vh - var(--header-h) - 8px);
+	/* sticky の要素は、親（#contents）の下端より下には出られない。一番下までスクロールすると、
+	   #contents の下端は body の下の margin（8px）の分だけ画面の下端より上に来る。メニューの margin の下端が
+	   それより下にあると、メニューが押し上げられてずれる。そこで、上下の margin（4px + 4px）と body の margin（8px）を引き、
+	   端数の余裕を 4px とる */
+	max-height: calc(100vh - var(--header-h) - 20px);
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: auto;
