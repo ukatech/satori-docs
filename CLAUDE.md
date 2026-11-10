@@ -77,7 +77,7 @@
 
 `main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が `oldstyle/build.py` と `oldstyle/check.py` を走らせ、https://ukatech.shillest.net/satori-docs/ に公開する。ビルドは自前（Zensical・MkDocs は使わない。以前の Zensical 版は `old-zensical` ブランチに残してある）で、リンク切れ・アンカー切れがあると失敗する。ビルドの仕組みは [`oldstyle/README.md`](oldstyle/README.md)。原稿を書くうえで知っておくことは次のとおり。
 
-- サイトの見た目と構造は、里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン）を模している。上にヘッダ（左に 80x80 のアイコン、ページ名、その下にパンくずリスト。右上に検索欄と翻訳ボタン）、左に目次（`#menubar`）、右に本文（`#body`）。wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い。HTML は HTML5 で、JavaScript は検索（`search.js`）・翻訳ボタン（`translate.js`）・【タブ】のコピー（`copy-tab.js`）だけ
+- サイトの見た目と構造は、里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン）を模している。上にヘッダ（左に 80x80 のアイコン、ページ名、その下にパンくずリスト。右上に検索欄と翻訳ボタン）、左に目次（`#menubar`）、右に本文（`#body`）。wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い。HTML は HTML5 で、左のメニューはスクロールしても画面の上端に残り、幅が 767px 以下ではハンバーガーボタンで開く引き出しに畳む。JavaScript は検索（`search.js`）・翻訳ボタン（`translate.js`）・【タブ】のコピー（`copy-tab.js`）・狭い画面のメニュー（`menu.js`）だけ
 - ページの H1 は、本文ではなくヘッダのページ名（wiki の `h1.title`）になる。本文の見出しは H2 が帯、H3 が枠、H4 が左の太線（wiki と同じ）
 - ページの URL は、Zensical 版と同じディレクトリ形式（`other/saori/` など）。外部からのリンクを切らないため、変えない。`file://` ではディレクトリのリンクが `index.html` を開かないので、手元では `python -m http.server -d _site` で見る
 - 原稿はリポジトリ直下にあるため、`scripts/prepare_site.py` が `_site_src/` に写してからビルドする。その際 `INDEX.md` は `index.md`（トップページ）になり、`INDEX.md` へのリンクも書き換えられる。原稿内のリンク（`../functions/set.md` や `05-kakko.md#引数区切り` など）は、ビルドが出力先の相対パスに書き換える。行き先が無ければビルドが止まる
