@@ -2,8 +2,14 @@
 /* 里々 Wiki（https://soliton.sub.jp/satori/ 。PukiWiki 1.5 の標準スキン skin/pukiwiki.css に、
    丸ゴシックの字・見出しの字間・左のメニューの幅 18em などの手直しを加えたもの）の見た目を、HTML5 で模したスタイル。
    wiki の規則のうち、このサイトで使う分（文字・リンク・見出し・リスト・表・pre・ヘッダ・左のメニュー）だけを持つ。
-   寸法は wiki のまま。色は、wiki の色の色相を +150 度回したもの（青系 → 赤系。ヘッダのアイコンの色に合わせた）。
-   無彩色（黒・白・灰色）と、色に意味があるもの（note の青系・warning の赤系の枠、検索語の強調の黄色）は回さない。wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い */
+   寸法は wiki のまま。色は、ヘッダのアイコンに合わせて wiki の青系の配色を赤系にしてある。決め方は次のとおり。
+   - 青色付近の色（リンク #215dc6、見出しの帯 #ddeeff、表の #ccd5dd など）は、色相を +150 度回す（青 → 赤）
+   - 色に意味があるもの（note の青系の枠、検索語の強調の黄色）は、wiki の色のまま。
+     ただし warning の枠は、wiki の赤系では赤系のページに埋もれるので、注意の色として黄色系にする
+   - その他の色は、回すと緑や黄土色になって浮くので、赤系の配色に合う色を選び直す
+     （訪問済みのリンク #a63d21 → 赤紫 #a62160、表の枠の青みの灰色 #ddddee / #888899 → 赤紫みの灰色 #eedde6 / #998890）
+   - 無彩色（黒・白・灰色）はそのまま
+   wiki の道具（ナビゲータ・ツールバー・最終更新・フッタ）は無い */
 
 /* ---- 文字・リンク ---- */
 html {
@@ -35,7 +41,7 @@ a:active {
 	text-decoration: none;
 }
 a:visited {
-	color: #21a680;
+	color: #a62160;
 	background-color: inherit;
 	text-decoration: none;
 }
@@ -141,10 +147,10 @@ hr, hr.full_hr {
 
 /* ---- コード ---- */
 pre {
-	border-top: #eee6dd 1px solid;
-	border-bottom: #999088 1px solid;
-	border-left: #eee6dd 1px solid;
-	border-right: #999088 1px solid;
+	border-top: #eedde6 1px solid;
+	border-bottom: #998890 1px solid;
+	border-left: #eedde6 1px solid;
+	border-right: #998890 1px solid;
 	padding: .5em;
 	margin-left: 1em;
 	margin-right: 2em;
@@ -196,7 +202,8 @@ thead th {
 	background-color: #f0e0e0;
 }
 
-/* ---- 注（!!! note / warning）。note は情報の青系、warning は注意の赤系。どちらも色に意味があるので、色相を回さず wiki の色のまま ---- */
+/* ---- 注（!!! note / warning）。note は情報の青系で、色に意味があるので wiki の色のまま。
+   warning は注意の色。wiki の赤系では赤系のページに埋もれるので、黄色系（琥珀色）にしてある ---- */
 .admonition {
 	border: 1px solid #ccd5dd;
 	background-color: #f5f8ff;
@@ -209,8 +216,8 @@ thead th {
 	font-weight: bold;
 }
 .admonition.warning, .admonition.danger {
-	border-color: #dd9999;
-	background-color: #fff4f4;
+	border-color: #ddbb55;
+	background-color: #fffbea;
 }
 .admonition p {
 	margin: 0;
@@ -389,7 +396,7 @@ ul.index-grid li {
 	width: min(460px, calc(100vw - 1em));
 	max-height: 70vh;
 	overflow-y: auto;
-	border: 1px solid #999088;
+	border: 1px solid #998890;
 	background: #ffffff;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
 	color: #000000;
@@ -483,7 +490,7 @@ ul.index-grid li {
 	min-width: 13em;
 	margin-top: 2px;
 	padding: .2em 0;
-	border: 1px solid #999088;
+	border: 1px solid #998890;
 	background: #ffffff;
 	color: #000000;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
@@ -549,7 +556,7 @@ ul.index-grid li {
 }
 .s2-cta a {
 	padding: .5em 1.2em;
-	border: 1px solid #999088;
+	border: 1px solid #998890;
 	background-color: #fff0ee;
 	font-weight: bold;
 }
