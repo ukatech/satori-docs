@@ -25,7 +25,7 @@
     // 広い画面では、ヘッダが上端に残る。その高さ（パンくずリストの折り返しで変わる）を --header-h に入れ、
     // 左のメニューの貼り付く位置と、#アンカーで飛んだ見出しの位置を、ヘッダの下に合わせる
     function measure() {
-      root.style.setProperty('--header-h', Math.ceil(header.getBoundingClientRect().height) + 'px');
+      root.style.setProperty('--header-h', header.getBoundingClientRect().height + 'px');
     }
     measure();
     if (window.ResizeObserver) new ResizeObserver(measure).observe(header);

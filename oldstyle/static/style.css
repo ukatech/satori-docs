@@ -21,8 +21,9 @@ html {
 body {
 	color: black;
 	background-color: white;
-	/* 上下はブラウザの既定（wiki と同じ 8px）。アイコンが画面の上端に付かないように */
-	margin: 8px 2%;
+	/* 下はブラウザの既定（wiki と同じ 8px）。上の 8px は、ヘッダの padding-top で空ける
+	   （body の margin にすると、スクロールの始めにヘッダが上端へ貼り付くまで 8px 動いてしまう） */
+	margin: 0 2% 8px 2%;
 	font-size: 100%;
 	font-family: "ヒラギノ丸ゴ Pro W3", "Hiragino Maru Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Osaka", "verdana", "arial", "helvetica", sans-serif;
 }
@@ -230,6 +231,7 @@ thead th {
    検索欄と翻訳ボタンは右上（wiki の div#banner の位置）。
    wiki のロゴは 80x80 だが、スクロールしても画面の上端に残す（yaya-docs と同じ。狭い画面を除く）ので、50x50 に縮める。
    区切りの hr.full_hr もヘッダの中に置いて、一緒に残す。
+   ヘッダは最初から画面の上端（top: 0）にあるので、スクロールしても動かない。
    ヘッダの高さ（--header-h）は、パンくずリストの折り返しで変わるので menu.js が測る。下の値は測る前の目安 ---- */
 html {
 	--header-h: 62px;
@@ -239,8 +241,8 @@ html {
 	position: sticky;
 	top: 0;
 	z-index: 50;
-	padding: 4px 0 0 0;
-	margin: -4px 0 0 0;                  /* 上の padding の分。ページの上端からの位置は従来どおり */
+	padding: 8px 0 0 0;                  /* アイコンが画面の上端に付かないように（body の上の margin の代わり） */
+	margin: 0;
 	background-color: white;
 	word-break: break-all;
 	display: flow-root;
@@ -339,12 +341,14 @@ h1.title {
 	margin: 4px;
 	font-size: 90%;
 	position: sticky;
-	top: calc(var(--header-h) + 4px);   /* ヘッダの下から、margin と同じだけ離す */
+	/* 貼り付く位置は、貼り付く前の位置（ヘッダの下に #contents の margin-top 4px と、メニューの margin 4px）と同じにする。
+	   違うと、スクロールの始めにメニューだけが動いて、ヘッダとの間が変わる */
+	top: calc(var(--header-h) + 8px);
 	/* sticky の要素は、親（#contents）の下端より下には出られない。一番下までスクロールすると、
 	   #contents の下端は body の下の margin（8px）の分だけ画面の下端より上に来る。メニューの margin の下端が
-	   それより下にあると、メニューが押し上げられてずれる。そこで、上下の margin（4px + 4px）と body の margin（8px）を引き、
+	   それより下にあると、メニューが押し上げられてずれる。そこで、上の 8px、下の margin（4px）、body の margin（8px）を引き、
 	   端数の余裕を 4px とる */
-	max-height: calc(100vh - var(--header-h) - 20px);
+	max-height: calc(100vh - var(--header-h) - 24px);
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: auto;
